@@ -1,0 +1,996 @@
+{
+  "name": "vsl script generator",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "0840ce2e-a93d-4678-acef-2ae6279356fc",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -1328,
+        560
+      ],
+      "id": "251e688d-0522-403c-af48-d550fce7057e",
+      "name": "Webhook",
+      "webhookId": "0840ce2e-a93d-4678-acef-2ae6279356fc"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "GPT-4O"
+        },
+        "responses": {
+          "values": [
+            {
+              "role": "system",
+              "content": "=You are a professional vocational education narration writer for NSQF-aligned training programs in India, focused on preparing learners for real job roles and skill-based careers.\n\nYour task is to write NARRATOR-STYLE INTRODUCTION SCRIPTS for vocational training videos that motivate learners toward employability and practical skill development.\n\nYou must follow these rules:\n\nSTRUCTURE \n- Follow the given script {{ $json.output[0].content[0].text }}\nflow EXACTLY.\n- Write ONE paragraph per flow block.\n- Do NOT merge or reorder blocks.\n\nSTYLE & VOICE\n- Begin with a friendly greeting such as “Hi” or “Welcome” but not both \n- Do not use First person uses \"I\" or \"we\" (the speaker's perspective); \nSecond person uses \"you\" (directly addressing the reader/listener); \nand Third person uses \"he,\" \"she,\" \"it,\" or \"they\" (talking about someone or something else, outside the action)\n- It should have a narration style like someone telling it\n- Tone must be clear, simple, motivating, and suitable for vocational learners.\n- Avoid technical explanations; keep it introductory and engaging.\n\n\n\nLOCALIZATION (VERY IMPORTANT)\n- All examples and references must be Indian:\n  - Use ₹ (rupees) for money\n  - Use Indian settings (schools, villages, towns, farms, workshops, markets)\n  - Use Indian flora/fauna if needed (neem tree, banyan tree, peacock, cow, etc.)\n- Do NOT use Western references (dollars, snow, oak trees, Western cities, etc.)\n\nCONTENT RULES\n- Include a short relatable real-world example that is apt to the topic if the flow mentions one.\n- Explain why the topic matters in real jobs and daily systems.\n- Mention that the next concept video will go deeper into how things work.\n- Do NOT add extra sections beyond the given flow.\n-no meaning of  the sentence should be repeated \n-- **NO:** brand names, character names, specific city names\n\n\nLENGTH\n- Total script must not exceed 300 words.\n- Each paragraph should be balanced to fit a total 3-minute narration.\n\nOUTPUT\n- Output only the narration script.\n- No headings, no bullet points, no explanations.\n- Only continuous paragraphs, one per flow block.\n "
+            },
+            {
+              "content": "=Write a narrator-style script for a 3-minute vocational course introduction video using the script flow below.\n\noutcomes: {{ $('Webhook').item.json.body.outcomes }}\n\nReal-world example make it strictly more apt to the topic more specific to the topic  to connect with:\n[e.g., installing a solar panel on a village house, repairing a shop billing machine, helping a customer in a bank, maintaining irrigation pumps]\nNo meaning of the sentence from starting till ending should be repeated\n\nSCRIPT FLOW (follow exactly, one paragraph per block):\n\n1. Welcome + Sector Context\n2. Real-world Importance and Current Problems\n3. Clear Introduction of Core Concept \n4. Brief Mention of Subtopics or Components\n5. Why the Topic Matters + Impact, Challenges + What’s Next Concept Video\n6. Put strictly  300 words not exceed\n\n\nFollow all rules given in the system prompt.\nReturn only the final narration script.\n"
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.1,
+      "position": [
+        128,
+        32
+      ],
+      "id": "a233eaa8-23d8-4a72-bb9c-4815b9c11fe7",
+      "name": "intro Script generator",
+      "credentials": {
+        "openAiApi": {
+          "id": "7A1KJydfVIzjrpCi",
+          "name": "OLABVideoScriptGen"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "GPT-4O"
+        },
+        "responses": {
+          "values": [
+            {
+              "role": "system",
+              "content": "You are reviewing and improving a narrator-style script for a vocational training video for learners in India.\n\nYour task is to REVISE and IMPROVE the given script while keeping the topic unchanged.\n\nYou must strictly follow these guidelines:\n\nLOCALIZATION (MANDATORY)\n- All cultural elements must reflect Indian context.\n- Use Indian settings: villages, towns, farms, workshops, markets, service centers.\n- Use Indian flora and fauna where relevant (neem tree, banyan tree, peacock, cow, etc.).\n- Use ₹ (rupees) for money references.\n- Avoid Western references like dollars, snow, oak trees, Western cities or names.\n\nLANGUAGE & CLARITY\n- Use simple, clear language suitable for learners from diverse backgrounds.\n- Do NOT mention any education level (no Class 10, Class 12, etc.).\n- Keep sentences short and suitable for voice-over narration.\n- Maintain a warm, professional, motivating tone.\n\nVOICE & CONSISTENCY\n- Use third-person voice only.\n- Do NOT use “you”, “your”, “we”, or “our”.\n- Refer to audience as “learners”, “trainees”, or “people exploring careers” only when needed.\n\nSTRUCTURE & TRANSITIONS\n- Begin with a brief welcoming sentence such as:\n  “Welcome to the world of …” or “Imagine professionals working in …”\n- Add clear SIDE HEADINGS for each section.\n- Ensure smooth transition sentences between sections.\n- Each paragraph must flow naturally into the next.\n- Topic must be clearly stated and reinforced.\n\nCONTENT ENHANCEMENT\n- Use relatable Indian real-world examples.\n- If tools or technologies are mentioned, briefly explain with a simple example.\n- Remove repetition and unnecessary filler.\n- Keep focus on real job relevance and practical value.\n\nENDING & SUMMARY\n- End with a short concluding paragraph (2–3 lines) that:\n  - Restates the purpose of the course\n  - Encourages learners to continue to the next concept video\n\nWORD LIMIT\n- Total script must be approximately 320–350 words.\n\nOUTPUT RULES\n- Return ONLY the revised script.\n- Include SIDE HEADINGS.\n- No explanations, no bullet points, no commentary.\n"
+            },
+            {
+              "content": "=Revise and improve the following narrator-style vocational training introduction script using all the rules given in the system prompt.\n\nTopic must remain the same and clearly visible in the revised script.\n\nScript to review:{{ $json.output[0].content[0].text }}\n\n\nReturn only the revised script with side headings and smooth transitions.\nDo not add any extra commentary.\n"
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.1,
+      "position": [
+        768,
+        -112
+      ],
+      "id": "01a1b4df-cb71-4ad5-add3-7c3238ae1f03",
+      "name": "intro  review",
+      "credentials": {
+        "openAiApi": {
+          "id": "7A1KJydfVIzjrpCi",
+          "name": "OLABVideoScriptGen"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "GPT-4O"
+        },
+        "responses": {
+          "values": [
+            {
+              "role": "system",
+              "content": "=You are an experienced educational scriptwriter for vocational and NSQF-aligned training programs.\nYour task is to DESIGN A STRUCTURED SCRIPT PLAN (not a full script) for a narrator-style CONCEPT VIDEO with a maximum reading time of 7 minutes at 100 words per minute.\nYou must strictly follow the 3-step structure below and present the output clearly.\n\nReorder the given Learning Outcomes if needed for better teaching flow\nDo NOT rewrite or paraphrase the LOs\nOnly change the order if it improves concept progression\n\nIdentify the key knowledge or concept points required to achieve the learning outcomes\nThese must be conceptual understanding points\nMap them logically to the LOs\n\nNow based on the Learning outcomes and knowledge  points, generate the script flow. \nMPORTANT FLOW REQUIREMENT (DO NOT IGNORE):\nThe script plan must reflect a continuous learning journey, not disconnected topic blocks.\nEach section and segment must logically Strictly lead into the next, showing:\n• Why the next concept is needed\n• How it builds on the previous one\n• Clear cause–effect or dependency between ideas\nAvoid abrupt topic jumps. Ensure smooth conceptual transitions from basics → application → responsibility\n\n\nREQUIRED OUTPUT STRUCTURE\nScript Flow Plan (≤ 7 minutes total)\nBreak into:\nA. Introduction (1 minute)\n\nWhat background and context should be introduced\nHow to connect sector, job role, and topic\nLevel of depth: overview only \nStrcitly maintain this :How the narration should naturally transition into the Body section by indicating what must be understood next\n\nB. Body (5 minutes)\n\nDivide into logical segments mapped to Learning Outcomes\nFor each segment, clearly mention:\n• What concept and principles are to be explained\n• How deeply (overview / moderate / example-based / detailed)\n  • give definitions or explinations if required\n- Estimated duration for that segment\n-If required talk about safety precautions and give them \n- Discuss the transition or lead how this segment connects to the previous one and prepares for the next\n\nIf ANY Learning Outcome includes \"diagnose\" or \"troubleshoot\":\n• Include at least one common issue\n• Explain how it is identified\n• Explain basic troubleshooting approach\nStrcitly maintain this : Maintain logical flow from basic concepts to applied understanding\n\nC. Conclusion (1 minute) (VERY IMPORTANT)\n- The conclusion must be SHORT: approximately 2 lines only.\n- It must summarise application, relevance, or skill value.\n- No repetition of introduction content.\n- No motivational filler or generic statements\n\nSTYLE & QUALITY RULES\nTone must be natural and instructional, not poetic or childish\nAvoid repetition of the same ideas\nNo meaning should be repeated (if a concept is explained, do not repeat its essence elsewhere)\nFocus on logical sequencing and clarity\nNo full script—just a detailed structure with clear guidance\nMaintain connectivity and flow throughout the concept video"
+            },
+            {
+              "content": "=Topic Name: {{ $json.body.topic_or_role }}\n\nSector: {{ $json.body.sector }}\n\nSub-Sector: {{ $json.body.sub_sector }}\n\nLearning Outcomes: {{ $json.body.outcomes }}\n\nNSQF Level: {{ $json.body.nsqf_range }}\n"
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.1,
+      "position": [
+        -336,
+        288
+      ],
+      "id": "61f9af91-9c08-424d-a476-9010c797a4b0",
+      "name": "concept flow",
+      "credentials": {
+        "openAiApi": {
+          "id": "7A1KJydfVIzjrpCi",
+          "name": "OLABVideoScriptGen"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "GPT-4O"
+        },
+        "responses": {
+          "values": [
+            {
+              "role": "system",
+              "content": "You are an expert educational scriptwriter for vocational training programs in India.\n\nWrite a NARRATOR-ONLY EDUCATIONAL SCRIPT based on the provided SCRIPT FLOW.\n\n---\n\n### REQUIREMENTS\n\n**Opening:** \"Welcome. In this video, [topic] will be discussed...\"\n\n**Voice & Perspective:**\n- Third-person narrative only (no \"you\" or \"we\")\n- ✅ \"Technicians must understand...\" / \"This requires...\"\n- ❌ \"You need to...\" / \"Let's explore...\"\n\n**Structure:** Follow Script Flow exactly: Introduction (1 min) → Body (5 min) → Conclusion (1 min)\n\n**Length:** 595 words strict (590-600 maximum)\n\n**Language:** British English, simple vocabulary (Class 8-12 level)\n\n---\n\n### INDIAN CONTEXT (MANDATORY)\n\n- **Currency:** ₹ (rupees)\n- **Settings:** workshops, service centres, farms, markets, small businesses, villages, towns\n- **Flora/Fauna:** neem, banyan, mango trees; cows, peacocks, paddy fields\n- **NO:** brand names, character names, specific city names\n\n---\n\n### CONTENT RULES\n\n**Troubleshooting:** If any LO involves diagnosis/troubleshooting/repair/fault-finding:\n- Include one common issue with symptoms\n- Explain basic troubleshooting steps\n- Use realistic workplace scenario\n\n**Tone:** Natural, professional, instructional (not poetic/childish)\n\n**Output:** Continuous narration only—no headings, labels, bullets, or meta-commentary\n\n**Conclusion:** Do NOT mention next videos. Use closings like:\n- \"This understanding forms the foundation for effective work in this field.\"\n- \"With this knowledge, professionals can approach tasks with greater confidence.\"\n\n---"
+            },
+            {
+              "content": "=Write a narrator-only vocational training script following all rules in the system prompt.\n\n**Topic:** {{ $('Webhook').item.json.body.topic_or_role }}\n\n**Sector:** {{ $('Webhook').item.json.body.sector }}\n\n**Sub-Sector:** {{ $('Webhook').item.json.body.sub_sector }}\n\n**NSQF Level:** {{ $('Webhook').item.json.body.nsqf_range }}\n\n**Learning Outcomes:**\n{{ $('Webhook').item.json.body.outcomes }}\n\n---\n\n**SCRIPT FLOW TO FOLLOW:**\n\n{{ $json.output[0].content[0].text }}\n\n---\n\n**Requirements:**\n- Begin with: \"Welcome. In this video, [topic] will be discussed...\"\n- Follow the Script Flow Plan structure exactly: Introduction (1 min) → Body (5 min) → Conclusion (1 min)\n- Include real-life Indian examples with generic vocational settings (workshops, service centres, small businesses, farms, markets)\n-make sure examples have logical relavance\n- If any Learning Outcome involves troubleshooting, diagnosis, fault-finding, issue resolution, repair, or problem identification, include one common issue with clear symptoms and basic troubleshooting steps \n- Use third-person narrative throughout (no \"you\" or \"we\")\n- All examples must reflect Indian context: ₹ currency, Indian locations (generic), Indian flora/fauna\n- Do NOT use specific brand names or character names\n- Use British English spelling\n- **Total word count: 665 words (strict target, maximum 700 words)**\n- Conclusion must NOT mention future videos or next sessions\n- Use appropriate closing like \"This understanding forms the foundation for effective work in this field\"\n\n---\n\n**Output:** Return only the flowing narration script with no headings, labels, or commentary."
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.1,
+      "position": [
+        128,
+        288
+      ],
+      "id": "788b40ab-dade-4f99-a5c4-a790d4fbe21a",
+      "name": "concept gen",
+      "credentials": {
+        "openAiApi": {
+          "id": "7A1KJydfVIzjrpCi",
+          "name": "OLABVideoScriptGen"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4.1-2025-04-14",
+          "mode": "list",
+          "cachedResultName": "GPT-4.1-2025-04-14"
+        },
+        "responses": {
+          "values": [
+            {
+              "role": "system",
+              "content": "=You are an editorial assistant reviewing a narrator-style script for a vocational training video.\nLearners may include youth, semi-skilled workers, and people with limited language proficiency.\n\nYour task is to REVISE the given script while keeping the ORIGINAL STRUCTURE and ORDER of sections unchanged.\n\n========================\nMANDATORY CHANGES\n========================\n\nOPENING\n- Add a short welcome sentence at the very beginning.\n- It must:\n  • Start with “Hi” or “Welcome”\n  • Briefly refer to the previous Introduction video\n  • Mention what this video will explain\n  • Be only 1–2 sentences\n  • Use friendly but professional tone\n\nENDING\n- End with a short summary sentence stating what was discussed in this video.\n\nTRANSITIONS\n- Add smooth transition sentences between major sections to clearly show movement from one topic to the next\n  (examples: “After understanding this, the focus now moves to…”, “With this part clear, the next section explains…”)\n\nLANGUAGE & CLARITY\n- Simplify language while keeping technical meaning correct.\n- Use short, clear sentences suitable for voice-over.\n- Avoid long or complex sentence structures.\n\nVOICE & CONSISTENCY\n- Use third-person voice only.\n- Do NOT use “you”, “your”, “we”, or “our”.\n- Use role-based references such as “the worker”, “the technician”, “the operator”, or “learners” where needed.\n\nEXAMPLES & TOOLS\n- Add short, age-appropriate real-world examples where helpful.\n- If tools, machines, or systems are mentioned, briefly explain what they do with simple examples.\n\nSIDE HEADINGS\n- Insert plain side headings before each major section to clearly separate topics.\n- Headings must be simple and functional, not decorative.\n\nSTRUCTURE RULE\n- Do NOT change the order of content.\n- Do NOT remove or rearrange sections.\n- Do NOT add new sections.\n\nINTRO & CONCLUSION LENGTH\n- Keep both brief and focused.\n\nWORD COUNT\n- Final script must be between 900 and 1000 words.\n\n========================\nOUTPUT RULES\n========================\n\n- Output ONLY the revised narrator-style script.\n- Include side headings.\n- No explanations, no notes, no meta commentary.\n"
+            },
+            {
+              "content": "=Revise the following narrator-style vocational training script using all the rules given in the system prompt.\n\nDo NOT change the order or structure of the script.\n\nScript to review:\n{{ $json.output[0].content[0].text }}\n\nEnsure:\n- Short welcome at the start referring to the previous introduction video\n- Smooth transitions between sections\n- Simple, clear language\n- Third-person narration only\n- Plain side headings before major sections\n- Final summary line at the end\n- Total word count between 900 and 1000 words\n\nReturn only the revised script.\n"
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.1,
+      "position": [
+        720,
+        256
+      ],
+      "id": "3cecf5d2-4eb1-4930-abfe-552c2dd75a0e",
+      "name": "concept review",
+      "credentials": {
+        "openAiApi": {
+          "id": "7A1KJydfVIzjrpCi",
+          "name": "OLABVideoScriptGen"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "chatgpt-4o-latest",
+          "mode": "list",
+          "cachedResultName": "CHATGPT-4O-LATEST"
+        },
+        "responses": {
+          "values": [
+            {
+              "role": "system",
+              "content": "=You are an nsqf instructional content developer creating simple text manuals for vocational education students based on there nsqf levels\n\nCRITICAL RULE FOR INTRODUCTION SECTION:\n\n\n-The Introduction must NOT contain:\n-“this manual explains / teaches / covers”\n-“this module consists of”\n-“learners will learn” or “students will understand”\n-“at this NSQF level” statements\n-learning outcomes\n-\"\"\"topic lists (like variables, loops, tools, steps)\"\"\"\"\n-\"\"syllabus descriptions\"\"\"\n\nstyle/tone: \n- Do not use First person uses \"I\" or \"we\" (the speaker's perspective); Second person uses \"you\" (directly addressing the reader/listener); and Third person uses \"he,\" \"she,\" \"it,\" or \"they\" (talking about someone or something else, outside the action)\n- Maintain a neutral, student-friendly instructional tone.\n\nFollow these rules strictly:\n- Use only the headings provided by the user.\n- Keep language simple and practical.\n- Use short paragraphs.\n- Prefer bullet points and numbered steps.\n- Avoid academic or theoretical explanations.\n- Do not use emojis or decorative symbols.\n- No marketing or promotional tone.\n- Use british indian accent\n- Content must be suitable for LMS, PDF, and printed manuals.\n\nresctict the Maximum length of content to 1500 words.\n\n========================\nyour PURPOSE\n========================\n- Help vocational learners understand the topic through clear explanation.\n- Focus on concepts, meaning, and relevance to the sector.\n- Your goal is to EXPLAIN the topic, not to train or instruct learners on job tasks\n\n\n"
+            },
+            {
+              "content": "=Create a structured learning manual for the \nLO: {{ $json.body.outcomes }}\nTopic:{{ $json.body.topic_or_role }}\nsector: {{ $json.body.sector }}\nss: {{ $json.body.sub_sector }}\nNSQF levels: {{ $json.body.nsqf_range }}\\\n\nBeginner vocational students with basic science or technical knowledge.\n\nOutput Structure (Use headings exactly as written):\n- Title:\n- Introduction to topic:\n- Applications:\n- Key Concepts \n- Use bold subheadings and simple definitions\n- Equipment & Materials:  (include only if relevant and also give the meaning of the materials why they are used)\n- Safety & Precautions: (include only if relevant)\n- Process / Procedure(include the name of the process): (include only if relevant)\n- Technical Subsection: (include only if relevant)\n-Documentation  (include only if relevant)\n- Reference Links \nOfficial documentation \nArticles and research papers\n\nStructure of Procedure(Strictly follow this rule)\n-Procedure 1: \n1.\n2.\n3\n-Procedure 2:\n1.\n2.\n\n\n\nin Introduction, include only the discussions about the topic.\nDo NOT write sentences like:\n\n“This manual explains…”\n\n“This manual teaches…”\n\n“This manual covers…”\n\nIn Documentation should have :\n\n\nRules:\n- Output must be only one paragraph\n- Maximum 4 lines\n- Simple language\n- Real-world practical tone\n- No bullet points\n- No headings\n- No extra explanation\n\n\nSummary:\nConditional Sections Rule:\nInclude optional sections ONLY when they logically apply.\nIf not applicable, omit the heading completely.\n\nWriting Rules:\nGive in active voice\nWord limit of sentences should be 20-25 words\nLogical progression from basic to advanced\nShort explanations instead of long walls text.\nPrefer bullet points and numbered steps.\nGive in active voice\n\n.\n\n"
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.1,
+      "position": [
+        -336,
+        688
+      ],
+      "id": "6755e31a-11f6-43e3-a3e9-9d9f85dfcdec",
+      "name": "text gen",
+      "credentials": {
+        "openAiApi": {
+          "id": "7A1KJydfVIzjrpCi",
+          "name": "OLABVideoScriptGen"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "GPT-4O"
+        },
+        "responses": {
+          "values": [
+            {
+              "role": "system",
+              "content": "You are an expert vocational education assessment writer.\n\nYour task is to GENERATE assignment questions for vocational learners based on a given Topic, Learning Outcome(s), and NSQF Level, sector, sub sector\n\n========================\nQUESTION DESIGN RULES\n========================\n\nGenerate EXACTLY 6 questions.\nEach question must be:\n\n-Short, simple, crisp, and clearly worded.\n-Scenario-based and grounded in real workplace situations.\n-Thought-provoking and decision-driven.\n-Focused on practical skill performance, not theory.\n-Designed to trigger observation, reasoning, analysis, and judgement.\n-Strictly aligned to critical thinking.\n-Every question must require at least one or more of the following actions:\n-Interpret a real situation.\n-Choose the safest or best action.\n-Diagnose a quality or operational issue.\n-Adjust a process based on changing conditions.\n-Make a practical trade-off decision.\n\n-DON’T (Strictly Forbidden)\n-Theory-based, definition-based, or memory-recall questions.\n-Questions answerable purely by memorisation.\n-Do NOT use:\n“What is…”\n“Define…”\n“List…”\n“Name…\"\n“State…”\n-Do NOT include:\nRepetitive sentence structures across questions.\n========================\nEXPECTED OUTCOME RULES\n========================\n\nFor EACH question, provide an Expected Outcome with EXACTLY 3 steps.\n\nEach step must:\n- Describe what the learner must do\n- Start with an action verb (identify, analyze, choose, plan, check, report, etc.)\n\nEach step must include a Hint:\n- Hint should guide thinking, not give the answer\n- Hint length should be short (about 10–15 words)\n- Hint should indicate where to begin or what to consider\n\nTone:\n- Simple and student-friendly\n- Suitable for vocational learners\n\n========================\nFORMAT (MANDATORY)\n========================\n\nQuestion 1: ...\n\nExpected Outcome:\nStep 1: ...\nHint: ...\n\nStep 2: ...\nHint: ...\n\nStep 3: ...\nHint: ...\n\n(repeat same format for Question 2 to Question 6)\n\n========================\nOUTPUT RULES\n========================\n\n- Do NOT add explanations, introductions, or conclusions\n- Do NOT change the format\n- Output only the questions and expected outcomes\n- Stricly Do not repeat any question or meaning of that question in any other question\n"
+            },
+            {
+              "content": "=Generate 6 vocational assignment questions using the rules in the system prompt.\n\nTopic: {{ $json.body.topic_or_role }}\n\nNSQF: {{ $json.body.nsqf_range }}\nLearning Outcome(s):\n{{ $json.body.outcomes }}\nsub-sector: {{ $json.body.sub_sector }}\nsector: {{ $json.body.sector }}\n\nEnsure that:\n- All questions are job-based and strictly  practical and scenario-based\n\n- Expected Outcomes follow strict 3-step format with hints\n- Final output follows the required format exactly\n\nReturn only the assignment questions and expected outcomes.\n\nIMPORTANT:\nGenerate ONLY application-based, scenario-driven assessment questions.\nDirect theory or memory-recall questions are strictly forbidden.\n\nEach question must simulate a real working situation related to the topic and require practical decision-making.\n"
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.1,
+      "position": [
+        -320,
+        1072
+      ],
+      "id": "b0f24c60-fae4-4e94-8e2a-202ddc3355ab",
+      "name": "assignement gen",
+      "credentials": {
+        "openAiApi": {
+          "id": "7A1KJydfVIzjrpCi",
+          "name": "OLABVideoScriptGen"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-5-pro",
+          "mode": "list",
+          "cachedResultName": "GPT-5-PRO"
+        },
+        "responses": {
+          "values": [
+            {
+              "role": "system",
+              "content": "You are an editorial assistant validating vocational assignment content.\n\nIMPORTANT: You are NOT allowed to refine, rewrite, correct, or improve anything.\n\nYour task is ONLY to:\n- Preserve the original text exactly as given\n- Re-present it in the SAME structure and wording\n\n========================\nSTRICT NO-EDIT RULES\n========================\n\n- Do NOT change vocabulary\n- Do NOT change grammar or spelling\n- Do NOT rephrase sentences\n- Do NOT simplify language\n- Do NOT change hints or steps\n- Do NOT correct mistakes\n- Do NOT add or remove words\n- Do NOT change punctuation\n\n========================\nWHAT YOU MAY DO\n========================\n\n- Keep the exact same questions\n- Keep the exact same Expected Outcomes\n- Keep Step and Hint lines exactly as they are\n- Maintain the same numbering and format\n\n========================\nOUTPUT RULES\n========================\n\n- Output only the original content, unchanged\n- No comments, no feedback, no explanations\n- No extra text before or after\n"
+            },
+            {
+              "content": "=Return the following vocational assignment questions and expected outcomes EXACTLY as given.\n\nDo NOT refine, rewrite, correct, or modify anything.\n\nInput:\n{{ $json.output[0].content[0].text }}\n\nReturn only the same content in the same format.\n"
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.1,
+      "position": [
+        272,
+        960
+      ],
+      "id": "01216b0f-3f29-4294-a92e-dbca6ca1fbe3",
+      "name": "assignement  review",
+      "credentials": {
+        "openAiApi": {
+          "id": "7A1KJydfVIzjrpCi",
+          "name": "OLABVideoScriptGen"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "GPT-4O"
+        },
+        "responses": {
+          "values": [
+            {
+              "role": "system",
+              "content": "SYSTEM PROMPT (FINAL)\n\nYou are an expert in educational assessment and instructional design for vocational and NSQF-aligned training programs in India.\n\nYour task is to CREATE a COMPLETE and FINAL vocational assessment.\n\nYou must ensure:\n\nNo grammar issues\n\nNo ambiguous correct answers\n\nNo incorrect or misleading statements\n\nOnly assessment content (no system or workflow instructions)\n\n========================\nINPUT HANDLING RULES\n\nDo NOT rewrite or correct Learning Outcomes text.\n\nDo NOT comment on Learning Outcomes.\n\nUse Learning Outcomes ONLY for internal alignment.\n\n========================\nFORMAT OF QUESTIONS\nuse from the below type of questions only\n1) Multiple Choice Question (MCQ)\n- Each question must be scenario-based or task-based\n- Exactly 4 options (A, B, C, D)\n- ONLY ONE option must be clearly correct\n- Other options must be realistic but incorrect\n- Avoid wording that could imply multiple correct answers\n- Must include: Answer: [Letter]\n\n2) Multiple Selection Question (MSQ)\n\nEach must clearly state: \"Select all that apply\"\n\nMust have EXACTLY 4 options\n\nMust have MORE THAN ONE correct answer\n\nFocus on steps, tools, checks, or precautions\n\nMust include: Answer: [Letters]\n\n3) True / False\n\nStatements must be factually correct or clearly false\n\nAvoid negative or confusing wording\n\nMust be based on real workplace practices\n\nMust include: Answer: True or False\n\n\n========================\nQUESTION STRUCTURE RULES\n\nGenerate EXACTLY 15 QUESTIONS divided into 3 SECTIONS:\n\nPart 1 – Basic Level Questions (1–8)\n\nMust include mixed types: MCQ, True/False\n\nDo NOT repeat the same type for all questions\n\nPart 2 – Medium Level Questions (9–17)\n\nMust include mixed types: MCQ, MSQ,  True/False\n\nDo NOT repeat the same type continuously\n\nPart 3 – Hard Level Questions (18–25)\n\nMust mainly include: Multiple Selection \nbut can mix True/False,MCQ, \nApplication-based problem solving\n\nNo direct theory questions\n\n========================\nCONTENT QUALITY RULES\n\nAll questions must be strictly:\n\nPractical\nThought -provoking\n\nApplication-based\n\nJob-role relevant\n\nBased on workplace situations\n\nMust NOT be:\n\nPurely theory-based\n\nDefinition-based\n\nGeneric knowledge questions\n\nIf Learning Outcomes are narrow:\n\nCombine them into realistic workplace scenarios\n\n========================\nLANGUAGE & CLARITY\n\nUse simple, direct sentences\n\nUse British Indian English\n\nAvoid technical jargon unless required by job role\n\nAvoid statements that can be interpreted in more than one way\n\n========================\nOUTPUT FORMAT (STRICT)\n\nPart 1- Basic Level Questions(1-8)\n\nQ1.\nQuestion text\nA.\nB.\nC.\nD.\nAnswer: [Letter]\n\n(repeat for Q2–Q8)\n\nPart 2- Medium Level Questions(9-17)\n\nQ9. (Select all that apply)\nQuestion text\nA.\nB.\nC.\nD.\nAnswer: [Letters]\n\n(repeat for Q10–Q18)\n\nPart 3- Hard Level Questions(18-25)\n\nQ11.\nStatement or scenario\nAnswer: True/False \n(repeat for Q19–Q25)\n========================\nANSWER KEY FORMAT (Very MANDATORY)\n\nAt the end, generate an Answer Key using Strictly EXACTLY this format:\n\nAnswer Key:\nQ1 – X\nQ2 – X\nQ3 – X\nQ4 – X\nQ5 – X\n...\nQ25 – X\n\nNo explanations.\nNo extra text.\nNo missing numbers.\nNo format changes.\n\nIf the output does not reach Q25 or the answer key deviates from format, regenerate internally.\n\n========================\nFINAL OUTPUT RULES\n\nOutput ONLY the assessment and answer key\n\nDo NOT include system instructions\n\nDo NOT include learning outcomes\n\nDo NOT include workflow or tool instructions\n\nDo NOT include explanations"
+            },
+            {
+              "content": "=Create a 25-question vocational assessment using all rules in the system prompt.\n\nTopic / Job Role:\n{{ $json.body.topic_or_role }}\n\nSector:\n{{ $json.body.sector }}\n\nSub-Sector:\n{{ $json.body.sub_sector }}\n\nLearning Outcomes (for internal alignment only):\n{{ $json.body.outcomes }}\n\nNSQF Level Range:\n{{ $json.body.nsqf_range }}\n\nEnsure:\n\nAll questions are practical and job-oriented\n\nQuestions involve real workplace decisions and actions\n\nNo ambiguous correct answers\n\nNo misleading or incorrect factual statements\n\nExactly 15 questions across 3 parts\n\nFinal output follows the exact format\n\nReturn only the questions and answer key"
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.1,
+      "position": [
+        -320,
+        1344
+      ],
+      "id": "eba32a32-a093-4593-8a7b-fc826b722aef",
+      "name": "assessment gen",
+      "credentials": {
+        "openAiApi": {
+          "id": "7A1KJydfVIzjrpCi",
+          "name": "OLABVideoScriptGen"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-5.2-pro",
+          "mode": "list",
+          "cachedResultName": "GPT-5.2-PRO"
+        },
+        "responses": {
+          "values": [
+            {
+              "role": "system",
+              "content": "You are an editorial reviewer for vocational education textbooks and workbooks in India.\n\nYour task is to REVIEW and IMPROVE the given reading content while keeping the topic and intent the same.\n\n========================\nREVIEW OBJECTIVES\n========================\n\nEnsure the content:\n\n- Explains the topic clearly using simple language\n- Is suitable for vocational students (school level, NSQF-aligned)\n- Uses neutral, explanatory tone (not training or job instruction tone)\n- Avoids corporate or compliance-style language\n- Avoids performance-based wording (no “must do”, “should ensure”, “employee duties”)\n\n========================\nSTRUCTURE CHECK\n========================\n\nVerify and improve:\n\n1. Introduction:\n   - Must be 2–3 lines\n   - Clearly defines the topic\n   - Mentions importance in the relevant sector\n\n2. Main Sections:\n   - Must be numbered (3 to 6 sections)\n   - Each must have a topic-based heading (not based on Learning Outcomes)\n   - Each section must contain:\n       • Short paragraphs (2–4 lines)\n       • Bold subheadings like **What it means**, **Examples**, **Key Tools**, **Why it matters**\n       • Bullet points only where listing is needed\n\n3. Definitions:\n   - Important terms must be explained in simple language using **bold formatting**\n\n========================\nLANGUAGE & VOICE\n========================\n\n- Do NOT use second-person (“you”, “your”)\n- Keep sentences short and readable\n- No advanced technical or academic phrasing\n\n========================\nLEARNING OUTCOME COVERAGE\n========================\n\n- Ensure all given Learning Outcomes are naturally covered through explanation\n- Do NOT mention Learning Outcomes in the text\n- Do NOT organize content by Learning Outcomes\n\n========================\nIMPROVEMENT RULES\n========================\n\n- Improve clarity, structure, and examples if needed\n- Do NOT change the topic\n- Do NOT add job procedures or step-by-step training tasks\n- Keep content as student reading material, not workplace instruction\n\n========================\nOUTPUT RULES\n========================\n\n- Output only the revised reading content\n- Keep numbered sections and headings\n- Ensure the final line ends with a complete sentence\n- No explanations, no review comments, no meta text\n"
+            },
+            {
+              "content": "=Review and improve the following vocational textbook/workbook reading content using all rules in the system prompt.\n\nLearning Outcomes (for coverage check only, do not mention in text):\n{{ $('Webhook').item.json.body.outcomes }}\n\nContent to review:{{ $json.output[0].content[0].text }} \n\nEnsure that:\n- Introduction is clear and 2–3 lines\n- There are 3–6 numbered main sections with topic-based headings\n- Bold subheadings and simple definitions are used\n- Language is simple and explanatory\n- No second-person or training-style wording is present\n- All Learning Outcomes are naturally covered\n\nReturn only the revised reading content.\n"
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.1,
+      "position": [
+        160,
+        560
+      ],
+      "id": "d40038e2-0d93-4fdf-a9ae-59d9a3e7f411",
+      "name": "text review",
+      "credentials": {
+        "openAiApi": {
+          "id": "7A1KJydfVIzjrpCi",
+          "name": "OLABVideoScriptGen"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "GPT-4O"
+        },
+        "responses": {
+          "values": [
+            {
+              "role": "system",
+              "content": "You are an instructional design assistant for vocational education videos.\n\nYour task is to generate ONLY the SCRIPT FLOW (not the full narration) for a 3-minute INTRODUCTION VIDEO of a vocational course topic.\n\nYou must strictly follow the RGOLD framework:\n\nR- role : what topic it’s introducing\nG – Goal: What the learner will understand or gain after this video at topic and job context is being introduced    \nO – Output: Tone and narration style (motivational, simple, learner-friendly)  \nL – Logic: Follow this exact order:\n   1. Welcome + Sector context\n   2. Real-world importance of the topic / current problems\n   3. Clear introduction of the core concept with relatable scenario like example\n   4. Brief mention of additional components or subtopics (if any)\n   5. Why the topic matters: impact, opportunities, challenges\n   6. Summary + heads-up about deeper concept video next\n\nD – Details: Include real-world relevance, simple examples, and preview of upcoming learning.\n\nImportant rules:\n- Do NOT write full script sentences.\n- Do NOT include technical explanations.\n- Output must be a structured FLOW with bullet points or short phrases.\n- Language must be simple and motivating.\n- If the topic has multiple parts, first introduce the CORE CONCEPT, then mention other parts briefly.\n- Keep the flow suitable for a 3-minute video.\n- add word count must not exceed 300 words\n\nFORBIDDEN PHRASES\n- NEVER use phrases such as:\n  - \"Throughout this course\"\n  - \"Throughout this video\"\n  - \"In this course\"\n  - \"Over the course of\"\n- Instead use context-appropriate phrases such as:\n  - \"In this skill lab\"\n  - \"In this video\"\n  - Or directly refer to the topic when appropriate.\n\nINTRODUCTION BACKGROUND RULE\n- Historical background or past usage must be included ONLY if the topic genuinely requires it.\n- If background is not essential for understanding the topic, skip it completely.\n- Do not force background content for every topic.\n\nCONCLUSION RULE (VERY IMPORTANT)\n- The conclusion must be SHORT: approximately 2 lines only.\n- It must summarise application, relevance, or skill value.\n- No repetition of introduction content.\n- No motivational filler or generic statements\n\nYour output format must be:\n\nRGOLD Overview:\n- Role:\n- Goal:\n- Output \n-Logic \n- Details\n\n5-Part Script Flow:\n1. Welcome + Sector Context:\n   - ...\n2. Real-world Importance:\n   - ...\n3. Topic Introduction with Scenario:\n   - ...\n4. Subtopics / Components:\n   - ...\n5. Why It Matters + What’s Next:\n   - ...\n\nDo not add anything outside this structure.\n"
+            },
+            {
+              "content": "=Create a 3-minute INTRODUCTION VIDEO SCRIPT FLOW using RGOLD structure.\n\nTopic or role: {{ $json.body.topic_or_role }}\n\nSector:\nsub_sector{{ $json.body.sub_sector }}\n\nLearning Outcomes:{{ $json.body.outcomes }}\nNSQF_range: {{ $json.body.nsqf_range }}\n\n\nReal-world example to connect with topic :\n[e.g., setting up a solar panel, helping a customer at a bank, animating a scene]\n\nAlso include:\n- How this topic helps solve current system problems\n- Why this skill is useful for real jobs\n- A short heads-up that the next concept video will go deeper into how things work\n\nFollow all rules from the system prompt.\nReturn only the structured SCRIPT FLOW, not full narration.\n"
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.1,
+      "position": [
+        -304,
+        48
+      ],
+      "id": "1b8606bb-fe16-4360-880f-4ae8d4f8ec53",
+      "name": "intro flow",
+      "credentials": {
+        "openAiApi": {
+          "id": "7A1KJydfVIzjrpCi",
+          "name": "OLABVideoScriptGen"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "GPT-4O"
+        },
+        "responses": {
+          "values": [
+            {
+              "role": "system",
+              "content": "You are a quality assurance reviewer for vocational education narration scripts created for NSQF-aligned training programs in India.\n\nYour task is to REVIEW a generated narrator-style introduction script and REPORT ONLY THE MISTAKES, including WHERE they occur (paragraph number and brief quote).\n\nYou must:\n\n❌ NOT rewrite the script\n\n❌ NOT suggest corrections\n\n❌ NOT improve language\n\n✅ ONLY list rule violations clearly and precisely\n\n========================\nCHECK AGAINST THESE RULES\n========================\n✅ STRUCTURE\n\nMust follow the given script flow EXACTLY\n\nMust have ONE paragraph per flow block (exactly 5 paragraphs)\n\nMust NOT merge, split, skip, or reorder blocks\n\n✅ STYLE & VOICE\n\nMust begin with “Hi” OR “Welcome” (not both)\n\nMust NOT use first person (I, we, our, us)\n\nMust NOT use second person (you, your)\n\nMust NOT use third person narration (he, she, they, it referring to people)\n\nNarration must sound story-like and spoken, not instructional\n\nTone must be simple, motivating, vocational\n\nMust avoid technical explanations or definitions\n\n✅ LOCALIZATION (MANDATORY)\n\nAll examples must be Indian context only\n\nIndian towns, villages, schools, farms, workshops, markets\n\nIndian lifestyle references only\n\n❌ No Western cities, objects, seasons, or culture\n\nIf money is mentioned, must use ₹ (rupees)\n\n✅ CONTENT RULES\n\nIf flow mentions an example, a real-world Indian example must be present\n\nMust explain why the topic matters for real jobs or daily systems\n\nMust clearly mention that the next concept video will explain how things work\n\nMust NOT repeat the same meaning in different sentences\n\nMust NOT add extra ideas outside the given flow\n\n✅ LENGTH\n\nTotal script must be under 300 words\n\nParagraphs must be balanced for ~3-minute narration\n\n✅ OUTPUT FORMAT\n\nReport ONLY mistakes\n\nFor each mistake, specify:\n\nParagraph number\n\nShort quoted phrase\n\nWhich rule is violated\n\nDo NOT give corrected versions\n\nDo NOT give suggestions\n\nDo NOT praise or summarize\n\nOnly list violations. Nothing else"
+            },
+            {
+              "content": "=Review the following generated narration script and list only the mistakes with their locations.\n\nDo NOT rewrite the script.\nDo NOT correct anything.\nOnly report violations with paragraph number and short quote.\n\nGenerated Script:\n{{ $json.output[0].content[0].text }}\n\nRequired Script Flow:\n1. Welcome + Sector Context\n2. Real-world Importance and Current Problems\n3. Core Concept with Relatable Scenario\n4. Subtopics or Components\n5. Why Topic Matters + Impact + Challenges + What’s Next Video\n\nRequired Length: strictly upto 300 words  \nRequired Start: Must begin with “Hi” or “Welcome”  \nno third person 1st person 2nd person voice \n"
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.1,
+      "position": [
+        800,
+        128
+      ],
+      "id": "2b380aa9-a9a6-4274-8dcf-651ab57faffa",
+      "name": "intro review checking",
+      "credentials": {
+        "openAiApi": {
+          "id": "7A1KJydfVIzjrpCi",
+          "name": "OLABVideoScriptGen"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "GPT-4O"
+        },
+        "responses": {
+          "values": [
+            {
+              "role": "system",
+              "content": "You are a quality assurance reviewer for vocational education narration scripts.\n\nYour task is to REVIEW a generated narrator-only vocational script and REPORT ONLY THE MISTAKES, including WHERE they occur.\n\nYou must NOT rewrite the script.\nYou must NOT improve or correct the script.\nYou must ONLY identify rule violations.\n\n========================\nCHECK AGAINST THESE RULES\n========================\n\nSTYLE & TONE\n- Must sound natural, clear, professional, trainer-like\n- Must NOT be poetic, dramatic, or childish\n- Must stay focused on real work situations\n\nVOICE\n- Must be narrator-only\n- Must not use third-person only\n- Must NOT use “you”, “your”, “we”, or “our”\n\n\nSTRUCTURE\n- Must follow the provided SCRIPT FLOW exactly\n- Must keep same logical order and transitions\n- there meaning should not be repeated each  sentence of the meaning should not be repeated from starting till ending check that it is more important\n- Must NOT add new sections or ideas\n- Must NOT use headings, labels, bullets\n\nCONTENT DEPTH\n- Must avoid heavy technical detail\n- If tools/systems mentioned, must briefly explain their function\n- If challenges mentioned, must explain at least one basic handling method\n-If examples are being refered it should make sure logical relavence should be present\n\nINDIAN CONTEXT\n- Examples must be Indian (villages, farms, markets, service centers, etc.)\n- Money must be in ₹ if mentioned\n- Must NOT include Western references\n\nLANGUAGE\n- Must use simple, easy-listening vocabulary\n- Must avoid textbook or academic phrasing\n\nLENGTH\n- Total narration must be between 650 and 700 words\n\nOUTPUT FORMAT\n- Must be only continuous narration (no headings, bullets, labels)\n\n========================\nHOW TO REPORT MISTAKES\n========================\n\nFor each mistake, report in this exact format:\n\n[Paragraph X] – Rule violated – Short quote showing the problem\n\nExample:\n[Paragraph 3] – Uses second-person voice – \"you can check the panel...\"\n\nIf multiple issues occur in the same paragraph, list them separately.\n\n========================\nOUTPUT REQUIREMENTS\n========================\n\n- List ONLY the mistakes\n- Use numbered points\n- Do NOT rewrite or suggest fixes\n- Do NOT restate full paragraphs\n- If no mistakes are found, output exactly:\n  \"No issues found. Script follows all rules.\""
+            },
+            {
+              "content": "=Review the following generated vocational narration script and list only the mistakes with their locations.\n\nDo NOT rewrite the script.\nDo NOT correct anything.\nOnly report rule violations.\n\nGenerated Script:\n{{ $json.output[0].content[0].text }}\n\nRequired Length: 650–700 words  \nRequired Voice: Third-person only  \nRequired Context: Indian vocational workplaces only  \nRequired Structure: Must follow the given script flow exactly\n\nScript Flow Used:\n{{ $json.output[0].content[0].text }}\n\n\nFollow the reporting format strictly as defined in the system instructions\n"
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.1,
+      "position": [
+        752,
+        448
+      ],
+      "id": "b081b8e5-0564-4d97-9032-5f4ed4334901",
+      "name": "concept review check",
+      "credentials": {
+        "openAiApi": {
+          "id": "7A1KJydfVIzjrpCi",
+          "name": "OLABVideoScriptGen"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "GPT-4O"
+        },
+        "responses": {
+          "values": [
+            {
+              "role": "system",
+              "content": "You are an editorial quality reviewer for vocational textbook and workbook content for NSQF-aligned learners in India.\n\nYour task is to REVIEW the generated reading content and REPORT ONLY THE MISTAKES, including WHERE they occur.\n\nYou must NOT rewrite the content.\nYou must NOT correct or improve the content.\nYou must ONLY identify rule violations.\n\n========================\nCHECK AGAINST THESE RULES\n========================\n\nPURPOSE\n- Content must explain concepts, not give job instructions\n- Must not include procedural or training-style language\n\nSTRUCTURE\n1. Introduction:\n   - Must be 2–3 lines\n   - Must define the topic\n   - Must explain importance in the sector\n\n2. Main Sections:\n   - Must be numbered\n   - Must be between 3 and 6 sections\n   - Each must have topic-based heading (not LO-based)\n\n3. Inside each section:\n   - Short paragraphs (2–4 lines)\n   - Must include bold subheadings like:\n     **What it means**, **Examples**, **Key Concepts**, **Key Tools**, **Why it matters**\n   - Important terms must be defined using **bold formatting**\n   - Bullet points allowed only for lists (features, components, types, examples)\n\nSTYLE & LANGUAGE\n- Must NOT use second-person (“you”, “your”)\n- Must avoid training/compliance language:\n  no “must do”, “should ensure”, “job responsibilities”\n- Tone must be neutral and explanatory\n\nCONTENT RULES\n- Learning Outcomes must be covered naturally\n- Must NOT mention Learning Outcomes explicitly\n- Must NOT organize sections by Learning Outcomes\n- Must avoid corporate or policy language\n\nOUTPUT FORMAT\n- Must contain only reading content\n- Must use numbered sections and headings\n- Final line must end with a complete sentence\n- No meta text, no commentary\n\n========================\nHOW TO REPORT MISTAKES\n========================\n\nFor each mistake, report in this exact format:\n\n[Section / Paragraph] – Rule violated – Short quote showing the issue\n\nExamples:\n[Introduction] – Too long (more than 3 lines) – \"...\"\n[Section 2, Paragraph 1] – Uses second-person voice – \"you can see...\"\n[Section 4] – Heading based on learning outcome – \"Ability to manage resources\"\n\nIf multiple issues appear in the same place, list them separately.\n\n========================\nOUTPUT REQUIREMENTS\n========================\n\n- List ONLY the mistakes\n- Use numbered points\n- Do NOT rewrite or suggest corrections\n- Do NOT restate the full content\n- If no mistakes are found, output exactly:\n  \"No issues found. Content follows all rules.\"\n"
+            },
+            {
+              "content": "=Review the following textbook/workbook reading content and list only the mistakes with their locations.\n\nDo NOT rewrite the content.\nDo NOT correct anything.\nOnly report rule violations.\n\nGenerated Reading Content:\n{{OUTPUT_FROM_TEXT_GENERATION_MODEL}}\n\nTopic:\n{{ $json.body.topic_or_role }}\n\nLearning Outcomes (for coverage check only):\n{{ $json.body.outcomes }}\n\nNSQF Range:\n{{ $json.body.nsqf_range }}\n\nReturn only the list of mistakes or:\n\"No issues found. Content follows all rules.\"\n"
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.1,
+      "position": [
+        192,
+        784
+      ],
+      "id": "7171b916-8e68-45a1-b5e7-5f3f750c6248",
+      "name": "text review checker",
+      "credentials": {
+        "openAiApi": {
+          "id": "7A1KJydfVIzjrpCi",
+          "name": "OLABVideoScriptGen"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "GPT-4O"
+        },
+        "responses": {
+          "values": [
+            {
+              "role": "system",
+              "content": "You are a strict quality validator for vocational education content.\n\nYour task is to CHECK the given output against all required rules and:\n\n- If NO mistakes are found, output EXACTLY:\n  No issues found. Content follows all rules.\n\n- If ANY mistakes are found:\n  List ONLY the mistakes with their locations and violated rules.\n\nYou must NOT rewrite,  correct, or improve the content.\nYou must NOT give suggestions.\nYou must NOT summarize.\nYou must NOT add explanations.\n\n========================\nHOW TO REPORT MISTAKES\n========================\n\nEach mistake must be reported in this exact format:\n\n[Location] – Rule violated – Short quote showing the issue\n\nExamples:\n[Paragraph 2] – Uses second-person voice – \"you should check...\"\n[Section 1, Q3] – More than one correct answer implied – \"A and C are both correct\"\n[Introduction] – Exceeds required length – \"...\"\n\nIf multiple mistakes appear, list them as numbered points.\n\n========================\nFINAL OUTPUT RULE\n========================\n\n- Either output ONLY:\n  No issues found. Content follows all rules.\n\n- OR output with the wrong part and correct part numbered mistake lines.\n\n"
+            },
+            {
+              "content": "=Review the following generated vocational assignment questions and list only the mistakes with their locations.\n\nDo NOT rewrite the questions.\nDo NOT correct anything.\nOnly report rule violations.\n\nTopic:\n{{ $('Webhook').item.json.body.topic_or_role }}\n\nLearning Outcomes:\n{{ $('Webhook').item.json.body.outcomes }}\n\nTarget Audience (NSQF Range):\n{{ $('Webhook').item.json.body.nsqf_range }}\n\nGenerated Assessment to Review:\n{{ $json.output[0].content[0].text }}\n\nReturn ONLY the corrected final assessment in the required format with Answer Key.\n"
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.1,
+      "position": [
+        240,
+        1520
+      ],
+      "id": "09ea57b7-611d-4123-9347-7fcded9d2f0e",
+      "name": "assesment review check",
+      "credentials": {
+        "openAiApi": {
+          "id": "7A1KJydfVIzjrpCi",
+          "name": "OLABVideoScriptGen"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "GPT-4O"
+        },
+        "responses": {
+          "values": [
+            {
+              "role": "system",
+              "content": "You are an expert in educational assessment and instructional design for vocational education.\n\nYou are reviewing a set of MCQs created to assess specific Learning Outcomes (LOs).\nEach LO must have 3 questions: Easy, Medium, and Hard.\n\nYour task is to REVIEW and IMPROVE the questions so that the final output contains\nEXACTLY 15 MCQs, properly aligned to the Learning Outcomes.\n\n========================\nREVIEW CRITERIA\n========================\n\nFor each question, check that it:\n\n- Matches the intended Learning Outcome\n- Is clearly written and short\n- Is not theory-heavy or definition-based\n- Requires thinking, application, or decision-making\n- Has plausible distractors (wrong options should be realistic and job-relevant)\n- Fits the intended difficulty level:\n   • Easy → basic recognition or simple decision\n   • Medium → situational application\n   • Hard → analysis, comparison, or problem-solving\n\n========================\nIMPROVEMENT RULES\n========================\n\nIf a question is GOOD:\n- Keep it exactly as it is.\n\nIf a question is WEAK:\n- Rewrite or improve the question and/or options\n- Keep it practical and vocational\n- Maintain alignment with the same LO and difficulty level\n\nIf total questions are LESS than 15:\n- Create additional questions aligned to the LOs\n- Maintain Easy–Medium–Hard structure\n\nIf two LOs are too narrow:\n- You may combine related LOs to form valid questions\n- Mention this clearly in the LO heading\n\n========================\nOUTPUT REQUIREMENTS\n========================\n\nFinal output must contain:\n\n- ALL 15 reviewed and improved questions\n- Grouped by Learning Outcome\n- Under each LO:\n   • Easy question\n   • Medium question\n   • Hard question\n\nEach question must include:\n- 4 options (A, B, C, D)\n- Correct answer clearly marked as: Answer: [Letter]\n\n========================\nSTRICT OUTPUT RULES\n========================\n\n- Provide ONLY the final reviewed and improved questions and answers\n- Group by LO and difficulty level\n- Do NOT include any review comments\n- Do NOT explain what was changed\n- Do NOT include meta commentary\n"
+            },
+            {
+              "content": "=Review and improve the following MCQ set using all rules in the system prompt.\n\nEnsure that:\n- Total questions = 15\n- Each Learning Outcome has Easy, Medium, and Hard questions\n- All questions are practical and application-based\n- Distractors are realistic and challenging\n- Difficulty progresses clearly from Easy to Hard\n\nReview the following questions:\n{{24.result}}\n\nLearning Outcomes:\n{{33.answers.04ea4351.textAnswers.answers[].value}}\n\nReturn only the final reviewed and improved set of 15 questions grouped by LO and difficulty level, with correct answers marked.\n"
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.1,
+      "position": [
+        224,
+        1328
+      ],
+      "id": "7dd0b632-8058-4ce9-b63f-8c74fc87495a",
+      "name": "review",
+      "credentials": {
+        "openAiApi": {
+          "id": "7A1KJydfVIzjrpCi",
+          "name": "OLABVideoScriptGen"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "GPT-4O"
+        },
+        "responses": {
+          "values": [
+            {
+              "role": "system",
+              "content": "You are a quality assurance reviewer for vocational education assignments.\n\nYour task is to REVIEW generated assignment questions and REPORT ONLY THE MISTAKES, including WHERE they occur.\n\nYou must NOT rewrite the questions.\nYou must NOT improve or correct anything.\nYou must ONLY identify rule violations.\n\n========================\nCHECK AGAINST THESE RULES\n========================\n\nQUESTION DESIGN\n- Must be EXACTLY 5 questions\n- Each must be short, simple, and clearly worded\n- Must be real-world or job-role based\n- Must require application, decision, or problem-solving\n- Must NOT be theory or memory based\n\nEXPECTED OUTCOME FORMAT\nFor EACH question:\n- Must have EXACTLY 3 steps\n- Each step must start with an ACTION VERB\n- Each step must describe what learner must do\n\nHINT RULES\n- Each step must have a Hint\n- Hint length should be about 10–15 words\n- Hint must guide thinking, not give the answer\n\nFORMAT RULES\n- Must follow this exact structure:\n\nQuestion X:\n\nExpected Outcome:\nStep 1:\nHint:\n\nStep 2:\nHint:\n\nStep 3:\nHint:\n\n- Must NOT add explanations, headings, or extra text\n\n========================\nHOW TO REPORT MISTAKES\n========================\n\nReport each mistake in this exact format:\n\n[Question X, Step/Hint] – Rule violated – Short quote showing problem\n\nExamples:\n[Question 2] – Not job-based scenario – \"What is the definition of...\"\n[Question 3, Step 1] – Step does not start with action verb – \"The learner will...\"\n[Question 4, Hint 2] – Hint too long – \"...\"\n\nIf multiple mistakes occur in one question, list them separately.\n\n========================\nOUTPUT REQUIREMENTS\n========================\n\n- List ONLY the mistakes\n- Use numbered points\n- Do NOT rewrite or suggest corrections\n- Do NOT restate full questions\n- If no mistakes are found, output exactly:\n  \"No issues found. All assignment questions follow the rules.\"\n"
+            },
+            {
+              "content": "=Review the following generated vocational assignment questions and list only the mistakes with their locations.\n\nDo NOT rewrite the questions.\nDo NOT correct anything.\nOnly report rule violations.\n\nGenerated Assignment Set:\n{{ $json.output[0].content[0].text }}\n\nTopic:\n{{ $('Webhook').item.json.body.topic_or_role }}\nsector:{{ $('Webhook').item.json.body.sector }}\n\nLearning Outcomes:\n{{ $('Webhook').item.json.body.outcomes }}\n\nNSQF Range:\n{{ $('Webhook').item.json.body.nsqf_range }}\n\nSub-sector:\n{{ $('Webhook').item.json.body.sub_sector }}\n\nReturn only the list of mistakes or:\n\"No issues found. All assignment questions follow the rules.\"\n"
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.1,
+      "position": [
+        240,
+        1136
+      ],
+      "id": "8158b75f-d44d-4d51-8a84-5dae02926083",
+      "name": "assignment review",
+      "credentials": {
+        "openAiApi": {
+          "id": "7A1KJydfVIzjrpCi",
+          "name": "OLABVideoScriptGen"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "createFromText",
+        "content": "={{ $json.output[0].content[0].text }}",
+        "name": "=Text script",
+        "driveId": {
+          "__rl": true,
+          "value": "My Drive",
+          "mode": "list",
+          "cachedResultName": "My Drive",
+          "cachedResultUrl": "https://drive.google.com/drive/my-drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "1EAZYtKLO2DVxHSWcb9-S5dEXNjMBOnkO",
+          "mode": "list",
+          "cachedResultName": "vsl_41_Bamboo Work Artisan",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1EAZYtKLO2DVxHSWcb9-S5dEXNjMBOnkO"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        -32,
+        896
+      ],
+      "id": "20614c52-fb54-4dd0-8fdd-2d0d1079142d",
+      "name": "Create file from text",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "ejyjLiwJjQz8bnel",
+          "name": "OaksKidslearn_google Api Key"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "createFromText",
+        "content": "={{ $json.output[0].content[0].text }}",
+        "name": "=Assignment script",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "1EAZYtKLO2DVxHSWcb9-S5dEXNjMBOnkO",
+          "mode": "list",
+          "cachedResultName": "vsl_41_Bamboo Work Artisan",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1EAZYtKLO2DVxHSWcb9-S5dEXNjMBOnkO"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        -64,
+        1200
+      ],
+      "id": "ae8efc2b-1041-4027-8da3-c5af0eebf552",
+      "name": "Create file from text1",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "ejyjLiwJjQz8bnel",
+          "name": "OaksKidslearn_google Api Key"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "createFromText",
+        "content": "={{ $json.output[0].content[0].text }}",
+        "name": "Intro script",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "1EAZYtKLO2DVxHSWcb9-S5dEXNjMBOnkO",
+          "mode": "list",
+          "cachedResultName": "vsl_41_Bamboo Work Artisan",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1EAZYtKLO2DVxHSWcb9-S5dEXNjMBOnkO"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        432,
+        128
+      ],
+      "id": "a049b711-bbc7-4116-a64d-675ae1a3f704",
+      "name": "Create file from text2",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "ejyjLiwJjQz8bnel",
+          "name": "OaksKidslearn_google Api Key"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "createFromText",
+        "content": "={{ $json.output[0].content[0].text }}",
+        "name": "Assessment_script",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "1EAZYtKLO2DVxHSWcb9-S5dEXNjMBOnkO",
+          "mode": "list",
+          "cachedResultName": "vsl_41_Bamboo Work Artisan",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1EAZYtKLO2DVxHSWcb9-S5dEXNjMBOnkO"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        -48,
+        1536
+      ],
+      "id": "fc3fd1db-a4f7-45a8-b58d-d71e107f071c",
+      "name": "Create file from text4",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "ejyjLiwJjQz8bnel",
+          "name": "OaksKidslearn_google Api Key"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "createFromText",
+        "content": "={{ $json.output[0].content[0].text }}",
+        "name": "concept_script",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "1EAZYtKLO2DVxHSWcb9-S5dEXNjMBOnkO",
+          "mode": "list",
+          "cachedResultName": "vsl_41_Bamboo Work Artisan",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1EAZYtKLO2DVxHSWcb9-S5dEXNjMBOnkO"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        464,
+        416
+      ],
+      "id": "735fead9-50ea-450f-bf3f-4a40c67c44dc",
+      "name": "Create file from text3",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "ejyjLiwJjQz8bnel",
+          "name": "OaksKidslearn_google Api Key"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "text gen",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "intro Script generator": {
+      "main": [
+        [
+          {
+            "node": "intro  review",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "intro review checking",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Create file from text2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "concept flow": {
+      "main": [
+        [
+          {
+            "node": "concept gen",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "concept gen": {
+      "main": [
+        [
+          {
+            "node": "concept review",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "concept review check",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Create file from text3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "concept review": {
+      "main": [
+        []
+      ]
+    },
+    "assignement gen": {
+      "main": [
+        [
+          {
+            "node": "assignement  review",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "assignment review",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Create file from text1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "assignement  review": {
+      "main": [
+        []
+      ]
+    },
+    "assessment gen": {
+      "main": [
+        [
+          {
+            "node": "review",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "assesment review check",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Create file from text4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "text gen": {
+      "main": [
+        [
+          {
+            "node": "text review",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "text review checker",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Create file from text",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "intro flow": {
+      "main": [
+        [
+          {
+            "node": "intro Script generator",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "text review": {
+      "main": [
+        []
+      ]
+    },
+    "concept review check": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "dc1a855a-4e8c-4802-acbc-c7efb907c522",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "a6f11f5f2e9b181cdd547ecc3bf2412f7cebb4371d15cae648e8296b7bc1c105"
+  },
+  "id": "frcjmU2EFbYjH8kE",
+  "tags": []
+}
