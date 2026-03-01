@@ -1,0 +1,198 @@
+# 🚀 AI Vocational Content Automation Engine
+
+A modular AI-powered automation system built in n8n for generating:
+
+- 🎬 Vocational Training Video Scripts
+- 🛠️ Hands-on Simulation Scripts
+- 📘 Concept Explanations (LO-based)
+- 📝 Assignments
+- ❓ Assessments
+- ☁️ Automated Google Drive Exports
+
+This system transforms structured vocational inputs (Topic, Learning Outcomes, NSQF Level, Sector, Job Role) into fully formatted educational content.
+
+---
+
+# 🏗️ System Architecture
+
+Webhook → Switch (Job Role Routing) → AI Generation → Formatting → Google Drive Export
+
+Built using:
+- n8n (Cloud)
+- OpenAI GPT-4o Mini
+- Google Drive API
+- Conditional Switch Routing
+- Structured Prompt Engineering
+- JSON-based content formatting
+
+---
+
+# 📂 Project 1: Video Script Generation
+
+This workflow contains 4 major content modules:
+
+## 1️⃣ Introduction Module
+- Triggered via Webhook
+- Routed using Switch (Job Role-based)
+- GPT-4o Mini generates structured introduction
+- Output saved directly to Google Drive
+
+---
+
+## 2️⃣ Concept Module (Advanced LO Processing)
+
+Input:
+- Topic
+- Learning Outcomes (LOs)
+- NSQF Level
+- Sector
+
+Processing Steps:
+1. LO Segmentation Node:
+   - Each Learning Outcome categorized into:
+     - Easy Explanation
+     - Medium Explanation
+     - Deep Explanation
+
+2. Script Generation Node:
+   - Generates structured concept explanation
+   - Ensures level-based depth alignment
+3. Auto-save to Drive
+This module ensures adaptive content depth based on LO complexity.
+
+---
+
+## 3️⃣ Text Module
+- Prompt-driven structured script generation
+- Custom formatting logic
+- Controlled output structure
+
+## 4️⃣ Assessment & Assignment Module
+- Generates:
+  - Assessments
+  - Assignments
+- Rule-based structured prompting
+- Difficulty alignment with NSQF level
+- Auto-export to Google Drive
+
+---
+
+# 📂 Project 2: Simulation Script Generation
+
+Designed for hands-on practical experience training.
+
+## Workflow Logic
+
+### Step 1: Webhook Trigger
+Receives:
+- Topic
+- Learning Outcomes
+- Flow Idea
+- Experience Type
+
+-  Step 2:
+                ┌──────────────────┐
+                │    Webhook       │
+                └────────┬─────────┘
+                         │
+                         ▼
+                ┌──────────────────┐
+                │  AI: Module &    │
+                │  Step Generator  │
+                └────────┬─────────┘
+                         │
+                         ▼
+              (Re-enter Workflow)
+                         │
+                         ▼
+                ┌──────────────────┐
+                │   Switch Node    │
+                │ (Module Routing) │
+                └────────┬─────────┘
+                         │
+                         ▼
+                ┌──────────────────┐
+                │ AI: Script       │
+                │ Expansion Layer  │
+                └────────┬─────────┘
+                         │
+                         ▼
+                ┌──────────────────┐
+                │ Formatting Code  │
+                └────────┬─────────┘
+                         │
+                         ▼
+                Frontend / Drive Output
+
+### Step 3: Module & Step Categorization
+- Simulation broken into:
+  - Modules
+  - Steps
+  - Practical Actions
+
+### Step 4: Voiceover Script Generation
+- Internal narration
+- Instructional voiceovers
+- Practical guidance scripting
+
+### Step 5: Formatting Layer
+- Code-based structured formatting
+- Ensures consistent full-fledged script output
+
+### Step 6: Final Export
+- Google Drive file creation
+- Organized folder placement
+
+---
+
+---
+
+# 🛠️ Technical Stack
+
+- n8n (Workflow Orchestration)
+- OpenAI GPT-4o Mini
+- Webhook-based input handling
+- Switch-based conditional routing
+- Google Drive API integration
+- Structured Prompt Engineering
+- Dynamic LO-based depth scaling
+
+---
+
+# 🔐 Security
+
+- API Keys stored securely in n8n Credentials
+- No secrets included in exported workflows
+- Credentials must be reconnected upon import
+
+---
+
+# 🎯 Key Engineering Highlights
+
+- Modular workflow architecture
+- Multi-level content depth automation
+- LO-based dynamic script expansion
+- Conditional job-role routing
+- Structured formatting enforcement
+- Automated cloud document management
+
+---
+
+# 📈 Use Cases
+
+- Vocational Training Automation
+- EdTech Content Generation
+- Scalable Curriculum Production
+- Simulation-based Practical Training
+- AI-assisted Instructional Design
+
+---
+
+# 👩‍💻 Author
+
+Developed as part of an AI Automation Internship demonstrating:
+
+- Workflow Architecture Design
+- Prompt Engineering
+- AI System Structuring
+- Educational Content Automation
