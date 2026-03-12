@@ -20,6 +20,8 @@ Webhook → Switch (Job Role Routing) → AI Generation → Formatting → Googl
 Built using:
 - n8n (Cloud)
 - OpenAI GPT-4o Mini
+- Gemini
+- Claude
 - Google Drive API
 - Conditional Switch Routing
 - Structured Prompt Engineering
@@ -76,6 +78,11 @@ This module ensures adaptive content depth based on LO complexity.
 - Auto-export to Google Drive
 
 ---
+
+   WORKFLOW 
+
+   <img width="1137" height="616" alt="Screenshot 2026-03-12 114316" src="https://github.com/user-attachments/assets/9dd8e122-de7e-4fb0-ab60-5d1d81908591" />
+
 
 # 📂 Project 2: Simulation Script Generation
 
