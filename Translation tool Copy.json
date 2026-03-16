@@ -25,8 +25,8 @@
       "name": "Get row(s) in sheet",
       "credentials": {
         "googleSheetsOAuth2Api": {
-          "id": "7mOh6jdxN7vNwOPb",
-          "name": "Sachin"
+          "id": "GOOGLE_SHEETS_CREDENTIAL",
+          "name": "GOOGLE_ACCOUNT"
         }
       }
     },
@@ -112,7 +112,7 @@
       ],
       "id": "266ee3b3-1bd0-4e7d-afe7-6761b2d71ece",
       "name": "Webhook1",
-      "webhookId": "b21fb79d-ea92-4628-92f2-bb7074f96062"
+      "webhookId": "WEBHOOK_ID"
     },
     {
       "parameters": {
@@ -172,8 +172,8 @@
       "alwaysOutputData": true,
       "credentials": {
         "googleSheetsOAuth2Api": {
-          "id": "7mOh6jdxN7vNwOPb",
-          "name": "Sachin"
+          "id": "GOOGLE_SHEETS_CREDENTIAL",
+          "name": "GOOGLE_ACCOUNT"
         }
       }
     },
@@ -241,8 +241,8 @@
       "name": "Append or update row in sheet",
       "credentials": {
         "googleSheetsOAuth2Api": {
-          "id": "7mOh6jdxN7vNwOPb",
-          "name": "Sachin"
+          "id": "GOOGLE_SHEETS_CREDENTIAL",
+          "name": "GOOGLE_ACCOUNT"
         }
       }
     },
@@ -454,7 +454,7 @@
       "name": "OpenAI Chat Model4",
       "credentials": {
         "openAiApi": {
-          "id": "3XTq5IEkkxqwfwSv",
+          "id": "Ur Opencredential id",
           "name": "oaks kidz"
         }
       }
