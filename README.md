@@ -155,10 +155,20 @@ WORKFLOW
 
 <img width="1695" height="717" alt="Screenshot 2026-03-12 114943" src="https://github.com/user-attachments/assets/071c1cde-1860-488e-be44-16faed435d53" />
 
+📂Project 3 : Translation tool 
+
+Designed for translation of video and simulation scripts to various languages i e : Hindi , english 
+
+three models are used gemini - translating , open ai - for punctuations , gemini - review again 
+
+Workflow 
 
 
 
----
+
+
+
+
 
 # 🛠️ Technical Stack
 
@@ -189,7 +199,6 @@ WORKFLOW
 - Structured formatting enforcement
 - Automated cloud document management
 
----
 
 # 📈 Use Cases
 
