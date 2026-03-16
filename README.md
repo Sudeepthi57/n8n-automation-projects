@@ -9,7 +9,7 @@ The projects focus on real-world deployment workflows including content generati
 
 Final-year Engineering student specializing in AI Automation Engineering and intelligent workflow systems.
 
-Core Focus Areas:
+Core Focus Areas
 
 LLM Orchestration
 
@@ -61,12 +61,18 @@ The system replaces manual instructional design workflows using AI automation pi
 ⚙️ System Workflow
 
 Curriculum Input
-→ Webhook Trigger
-→ n8n Workflow Routing
-→ LLM Content Generation
-→ Formatting Layer
-→ Validation Layer
-→ Google Drive Export
+↓
+Webhook Trigger
+↓
+n8n Workflow Routing
+↓
+LLM Content Generation
+↓
+Formatting Layer
+↓
+Validation Layer
+↓
+Google Drive Export
 
 ✨ Core Features
 
@@ -85,9 +91,7 @@ Multi-LLM validation workflow
 🧠 Models Used
 
 Gemini — Content Generation
-
 OpenAI — Formatting & Refinement
-
 Gemini — Final Review Validation
 
 🔹 Project 2 — AI Simulation Script Generation System
@@ -100,12 +104,18 @@ The workflow transforms learning inputs into step-based practical simulation exp
 ⚙️ Workflow Architecture
 
 Webhook Trigger
-→ Module & Step Generator
-→ Workflow Re-Entry
-→ Switch Node Routing
-→ Script Expansion Layer
-→ Formatting Engine
-→ Drive / Frontend Output
+↓
+Module & Step Generator
+↓
+Workflow Re-Entry
+↓
+Switch Node Routing
+↓
+Script Expansion Layer
+↓
+Formatting Engine
+↓
+Drive / Frontend Output
 
 ✨ Features
 
@@ -127,12 +137,18 @@ A multi-stage AI translation pipeline built to translate educational video and s
 ⚙️ Translation Workflow
 
 Google Sheets Input
-→ Prompt Builder
-→ Gemini (Translation Engine)
-→ OpenAI (Punctuation & Cleanup)
-→ Gemini (Academic Review)
-→ Structured Parser
-→ Google Sheets Output
+↓
+Prompt Builder
+↓
+Gemini (Translation Engine)
+↓
+OpenAI (Punctuation & Cleanup)
+↓
+Gemini (Academic Review)
+↓
+Structured Parser
+↓
+Google Sheets Output
 
 🧠 Model Responsibilities
 Gemini — Translation Engine
@@ -179,10 +195,14 @@ An AI narration generation system that converts storyboard scripts into natural 
 ⚙️ Workflow
 
 Storyboard Script
-→ Voice Selection
-→ ElevenLabs API
-→ Audio Generation
-→ Narration Output
+↓
+Voice Selection
+↓
+ElevenLabs API
+↓
+Audio Generation
+↓
+Narration Output
 
 🎙️ Voice Profiles
 
@@ -242,4 +262,4 @@ AI Instructional Design
 
 🚀 System Philosophy
 
-Instead of generating isolated AI responses, these projects build complete AI production engines capable of automating entire workflows end-to-end
+Instead of generating isolated AI responses, these projects build complete AI production engines capable of automating entire workflows end-to-end.
