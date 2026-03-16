@@ -1,76 +1,79 @@
-# 🚀 AI Automation Projects Portfolio  
-### Building End-to-End AI Systems using LLMs, Automation & Multimodal AI
+🚀 AI Automation Projects Portfolio
+Building End-to-End AI Systems using LLMs, Automation & Multimodal AI
 
-This repository showcases a collection of **AI automation systems** designed to transform manual workflows into intelligent, scalable pipelines using **Large Language Models (LLMs)**, workflow orchestration, and API integrations.
+This repository showcases a collection of AI automation systems designed to transform manual workflows into intelligent, scalable pipelines using Large Language Models (LLMs), workflow orchestration, and API integrations.
 
-The projects demonstrate practical applications of AI in **content generation, translation, automation, and audio production**, focusing on real-world production workflows rather than isolated AI experiments.
+The projects demonstrate practical applications of AI in content generation, translation, automation, and audio production, focusing on real-world production workflows rather than isolated AI experiments.
 
----
+👩‍💻 About Me
 
-# 👩‍💻 About Me
+Final-year Engineering student focused on AI Automation Engineering, building production-ready systems using:
 
-Final-year Engineering student focused on **AI Automation Engineering**, building production-ready systems using:
+LLM Orchestration
 
-- LLM Orchestration
-- Workflow Automation (n8n)
-- Prompt Engineering
-- API Integrations
-- Multimodal AI Systems
-- Python Automation
+Workflow Automation (n8n)
 
-Goal: Build AI systems that **automate real workflows**, not just generate outputs.
+Prompt Engineering
 
----
+API Integrations
 
-# 🧠 Tech Stack
+Multimodal AI Systems
 
-## AI & LLMs
-- Google Gemini
-- OpenAI GPT
-- Prompt Engineering
+Python Automation
 
-## Automation
-- n8n Workflow Automation
-- Python
-- REST APIs
-- JSON Pipelines
+Goal: Build AI systems that automate real workflows, not just generate outputs.
 
-## Multimodal AI
-- ElevenLabs (AI Voice Generation)
-- Audio Processing Pipelines
+🧠 Tech Stack
+AI & LLMs
 
----
+Google Gemini
 
-# 📂 Projects Overview
+OpenAI GPT
 
----
+Prompt Engineering
 
-# 🔹 Project 1 — AI Vocational Content Automation Engine
+Automation
 
-## 📌 Description
+n8n Workflow Automation
+
+Python
+
+REST APIs
+
+JSON Pipelines
+
+Multimodal AI
+
+ElevenLabs (AI Voice Generation)
+
+Audio Processing Pipelines
+
+📂 Projects Overview
+🔹 Project 1 — AI Vocational Content Automation Engine
+📌 Description
+
 An end-to-end AI-powered educational content generation platform that automatically converts structured curriculum inputs into complete vocational learning materials.
 
 The system replaces manual instructional design workflows using AI-driven automation pipelines.
 
----
+⚙️ Workflow
 
-## ⚙️ Workflow
-
-`Curriculum Input
-      ↓
+Curriculum Input
+⬇
 n8n Workflow Trigger
-      ↓
+⬇
 LLM Content Planner
-      ↓
+⬇
 Script Generator
-      ↓
+⬇
 Translation Pipeline
-      ↓
+⬇
 Audio Generation
-      ↓
+⬇
 Review Agent
-      ↓
-Production Ready Output
+⬇
+Production-Ready Output
+
 ✨ Features
 
 Training video script generation
@@ -101,15 +104,17 @@ An automated pipeline that generates structured educational scripts and learning
 Designed to standardize content creation and reduce manual writing effort.
 
 ⚙️ Workflow
+
 Topic Input
-   ↓
+⬇
 Prompt Engineering Layer
-   ↓
+⬇
 LLM Script Generation
-   ↓
+⬇
 Formatting Agent
-   ↓
+⬇
 Structured Output (JSON/Text)
+
 ✨ Features
 
 Structured script outputs
@@ -126,17 +131,19 @@ Scalable content generation
 A multi-stage AI translation system designed for translating video and simulation scripts into multiple languages while maintaining grammatical accuracy and readability.
 
 ⚙️ Translation Workflow
+
 Gemini → Language Translation
-        ↓
+⬇
 OpenAI → Punctuation & Formatting Correction
-        ↓
+⬇
 Gemini → Review & Quality Validation
+
 🌍 Supported Languages
 
 English
 
 Hindi
-(Extendable to multilingual support)
+(Extendable to multilingual workflows)
 
 ✨ Features
 
@@ -154,15 +161,17 @@ Workflow-based automation
 An AI-powered audio narration system that converts storyboard scripts into natural voice narration using ElevenLabs API integration.
 
 ⚙️ Workflow
+
 Storyboard Script
-        ↓
+⬇
 Voice Selection
-        ↓
+⬇
 ElevenLabs API
-        ↓
+⬇
 Audio Generation
-        ↓
+⬇
 Narration Output
+
 🎙️ Voice Options
 
 👦 Kid Voice
@@ -233,5 +242,4 @@ This portfolio demonstrates how AI can be used to build end-to-end automated pro
 S. Sudeepthi
 AI Automation Engineer | LLM Workflows | Multimodal AI Systems
 
-Building AI systems that automate real-world processes using LLMs and intelligent automation.
 Building AI systems that automate real-world processes using LLMs and intelligent automation.
