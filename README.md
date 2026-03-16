@@ -155,6 +155,10 @@ WORKFLOW
 
 <img width="1695" height="717" alt="Screenshot 2026-03-12 114943" src="https://github.com/user-attachments/assets/071c1cde-1860-488e-be44-16faed435d53" />
 
+
+
+📂 Project 3 — AI Translation Automation Tool
+
 Overview
 
 An AI-powered translation pipeline designed to automatically translate educational video and simulation scripts into multiple languages (Hindi, English, etc.) while preserving academic accuracy, formatting, and instructional quality.
