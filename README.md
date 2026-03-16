@@ -1,13 +1,15 @@
-🚀 AI Automation Projects Portfolio
+🚀 AI Automation Projects
 Building End-to-End AI Systems using LLMs, Automation & Multimodal AI
 
-This repository showcases a collection of AI automation systems designed to transform manual workflows into intelligent, scalable pipelines using Large Language Models (LLMs), workflow orchestration, and API integrations.
+This repository showcases production-oriented AI automation systems designed to transform manual workflows into scalable intelligent pipelines using Large Language Models, workflow orchestration, and API integrations.
 
-The projects demonstrate practical applications of AI in content generation, translation, automation, and audio production, focusing on real-world production workflows rather than isolated AI experiments.
+The projects focus on real-world deployment workflows including content generation, translation automation, and AI audio production.
 
 👩‍💻 About Me
 
-Final-year Engineering student focused on AI Automation Engineering, building production-ready systems using:
+Final-year Engineering student specializing in AI Automation Engineering and intelligent workflow systems.
+
+Core Focus Areas:
 
 LLM Orchestration
 
@@ -19,20 +21,20 @@ API Integrations
 
 Multimodal AI Systems
 
-Python Automation
+Automation Architecture
 
-Goal: Build AI systems that automate real workflows, not just generate outputs.
+Goal: Build AI systems that automate real workflows instead of isolated AI outputs.
 
 🧠 Tech Stack
 AI & LLMs
 
 Google Gemini
 
-OpenAI GPT
+OpenAI Models
 
 Prompt Engineering
 
-Automation
+Automation & Backend
 
 n8n Workflow Automation
 
@@ -44,202 +46,200 @@ JSON Pipelines
 
 Multimodal AI
 
-ElevenLabs (AI Voice Generation)
+ElevenLabs Voice AI
 
-Audio Processing Pipelines
+Audio Automation Pipelines
 
 📂 Projects Overview
 🔹 Project 1 — AI Vocational Content Automation Engine
-📌 Description
+📌 Overview
 
-An end-to-end AI-powered educational content generation platform that automatically converts structured curriculum inputs into complete vocational learning materials.
+An end-to-end AI-powered educational content generation platform that converts structured curriculum inputs into complete vocational learning materials automatically.
 
-The system replaces manual instructional design workflows using AI-driven automation pipelines.
+The system replaces manual instructional design workflows using AI automation pipelines.
 
-⚙️ Workflow
+⚙️ System Workflow
 
 Curriculum Input
-⬇
-n8n Workflow Trigger
-⬇
-LLM Content Planner
-⬇
-Script Generator
-⬇
-Translation Pipeline
-⬇
-Audio Generation
-⬇
-Review Agent
-⬇
-Production-Ready Output
+→ Webhook Trigger
+→ n8n Workflow Routing
+→ LLM Content Generation
+→ Formatting Layer
+→ Validation Layer
+→ Google Drive Export
 
-✨ Features
+✨ Core Features
 
-Training video script generation
+Vocational training video script generation
 
-Simulation script creation
+Concept explanation automation
 
-Educational explanations
+Assignment & assessment generation
 
-Assignment generation
+Learning Outcome–based content depth scaling
 
-Automated workflow orchestration
+Automated document export
 
-Multi-LLM validation
+Multi-LLM validation workflow
 
 🧠 Models Used
 
-Gemini → Content generation
+Gemini — Content Generation
 
-OpenAI → Refinement & formatting
+OpenAI — Formatting & Refinement
 
-Gemini → Final review validation
+Gemini — Final Review Validation
 
-🔹 Project 2 — AI Script Generation & Structuring Pipeline
-📌 Description
+🔹 Project 2 — AI Simulation Script Generation System
+📌 Overview
 
-An automated pipeline that generates structured educational scripts and learning materials from input topics using LLM orchestration.
+An automation pipeline designed to generate structured hands-on simulation scripts for vocational training environments.
 
-Designed to standardize content creation and reduce manual writing effort.
+The workflow transforms learning inputs into step-based practical simulation experiences.
 
-⚙️ Workflow
+⚙️ Workflow Architecture
 
-Topic Input
-⬇
-Prompt Engineering Layer
-⬇
-LLM Script Generation
-⬇
-Formatting Agent
-⬇
-Structured Output (JSON/Text)
+Webhook Trigger
+→ Module & Step Generator
+→ Workflow Re-Entry
+→ Switch Node Routing
+→ Script Expansion Layer
+→ Formatting Engine
+→ Drive / Frontend Output
 
 ✨ Features
 
-Structured script outputs
+Module-based simulation generation
 
-Automated formatting
+Practical action scripting
 
-Modular prompts
+Instructional narration generation
 
-Scalable content generation
+Structured formatting automation
+
+Consistent output standardization
 
 🔹 Project 3 — AI Translation Automation Tool
-📌 Description
+📌 Overview
 
-A multi-stage AI translation system designed for translating video and simulation scripts into multiple languages while maintaining grammatical accuracy and readability.
+A multi-stage AI translation pipeline built to translate educational video and simulation scripts while preserving structure, terminology, and instructional quality.
 
 ⚙️ Translation Workflow
 
-Gemini → Language Translation
-⬇
-OpenAI → Punctuation & Formatting Correction
-⬇
-Gemini → Review & Quality Validation
+Google Sheets Input
+→ Prompt Builder
+→ Gemini (Translation Engine)
+→ OpenAI (Punctuation & Cleanup)
+→ Gemini (Academic Review)
+→ Structured Parser
+→ Google Sheets Output
 
-🌍 Supported Languages
-
-English
-
-Hindi
-(Extendable to multilingual workflows)
-
-✨ Features
-
-Multi-model translation validation
-
-Automated grammar correction
+🧠 Model Responsibilities
+Gemini — Translation Engine
 
 Context-aware translation
 
-Workflow-based automation
+Structure preservation
+
+Academic tone enforcement
+
+OpenAI — Language Refinement
+
+Grammar correction
+
+Punctuation normalization
+
+Readability improvement
+
+Gemini — Review & Validation
+
+Terminology verification
+
+Educational correctness
+
+Structural validation
+
+✨ Key Features
+
+Multi-LLM orchestration
+
+Scene-level translation parsing
+
+Tag-preserving prompts
+
+Automated Sheets integration
+
+Error-resilient parsing
 
 🔹 Project 4 — AI Audio Generation Tool
-📌 Description
+📌 Overview
 
-An AI-powered audio narration system that converts storyboard scripts into natural voice narration using ElevenLabs API integration.
+An AI narration generation system that converts storyboard scripts into natural speech audio using ElevenLabs API integration.
 
 ⚙️ Workflow
 
 Storyboard Script
-⬇
-Voice Selection
-⬇
-ElevenLabs API
-⬇
-Audio Generation
-⬇
-Narration Output
+→ Voice Selection
+→ ElevenLabs API
+→ Audio Generation
+→ Narration Output
 
-🎙️ Voice Options
+🎙️ Voice Profiles
 
-👦 Kid Voice
+Kid Voice
 
-🧑 Young Voice
+Young Voice
 
-👨 Male Voice
+Male Voice
 
-👩 Female Voice
+Female Voice
 
-👴 Old Man Voice
+Old Man Voice
 
 ✨ Features
 
-API-based audio generation
+API-based voice generation
 
-Multiple voice styles
+Multi-voice narration support
 
-Automated narration pipeline
+Automated audio pipeline
 
-Production-ready audio outputs
+Production-ready narration output
 
-🧩 Key Skills Demonstrated
+🧩 Engineering Highlights
 
-AI Automation Engineering
+Modular workflow architecture
 
-LLM Workflow Design
+Multi-LLM orchestration
 
-Prompt Engineering
+Automation-first system design
 
-API Integration
+Structured prompt engineering
 
-Automation Architecture
+Cloud document automation
 
-Multimodal AI Systems
+Scalable AI pipelines
 
-Pipeline Design
+🔐 Security
 
-AI System Orchestration
+API keys stored securely via n8n credentials
 
-🚀 System Design Philosophy
+No secrets included in exported workflows
 
-Instead of isolated AI outputs, these projects focus on:
+Credential reconnection required after import
 
-✅ Automation-first AI systems
-✅ Multi-model collaboration
-✅ Scalable workflows
-✅ Real production pipelines
+📈 Use Cases
 
-🔮 Future Improvements
+Vocational Training Automation
 
-RAG-based knowledge grounding
+EdTech Content Production
 
-FastAPI deployment
+Simulation-Based Learning
 
-Dockerized workflows
+Multilingual Educational Systems
 
-Automated monitoring dashboard
+AI Instructional Design
 
-Human-in-the-loop validation
+🚀 System Philosophy
 
-📊 Repository Purpose
-
-This portfolio demonstrates how AI can be used to build end-to-end automated production systems combining LLM reasoning, workflow orchestration, and multimodal capabilities.
-
-👩‍💻 Author
-
-S. Sudeepthi
-AI Automation Engineer | LLM Workflows | Multimodal AI Systems
-
-Building AI systems that automate real-world processes using LLMs and intelligent automation.
+Instead of generating isolated AI responses, these projects build complete AI production engines capable of automating entire workflows end-to-end
