@@ -56,8 +56,7 @@ The system replaces manual instructional design workflows using AI-driven automa
 
 ## ⚙️ Workflow
 
-```text
-Curriculum Input
+`Curriculum Input
       ↓
 n8n Workflow Trigger
       ↓
@@ -234,4 +233,5 @@ This portfolio demonstrates how AI can be used to build end-to-end automated pro
 S. Sudeepthi
 AI Automation Engineer | LLM Workflows | Multimodal AI Systems
 
+Building AI systems that automate real-world processes using LLMs and intelligent automation.
 Building AI systems that automate real-world processes using LLMs and intelligent automation.
