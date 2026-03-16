@@ -1,31 +1,12 @@
-🚀 AI Automation Projects
+## AI Automation Projects
 Building End-to-End AI Systems using LLMs, Automation & Multimodal AI
 
 This repository showcases production-oriented AI automation systems designed to transform manual workflows into scalable intelligent pipelines using Large Language Models, workflow orchestration, and API integrations.
 
 The projects focus on real-world deployment workflows including content generation, translation automation, and AI audio production.
 
-👩‍💻 About Me
 
-Final-year Engineering student specializing in AI Automation Engineering and intelligent workflow systems.
-
-Core Focus Areas
-
-LLM Orchestration
-
-Workflow Automation (n8n)
-
-Prompt Engineering
-
-API Integrations
-
-Multimodal AI Systems
-
-Automation Architecture
-
-Goal: Build AI systems that automate real workflows instead of isolated AI outputs.
-
-🧠 Tech Stack
+## Tech Stack
 AI & LLMs
 
 Google Gemini
@@ -50,8 +31,8 @@ ElevenLabs Voice AI
 
 Audio Automation Pipelines
 
-📂 Projects Overview
-🔹 Project 1 — AI Vocational Content Automation Engine
+## Projects Overview
+# Project 1 — AI Vocational Content Automation Engine
 📌 Overview
 
 An end-to-end AI-powered educational content generation platform that converts structured curriculum inputs into complete vocational learning materials automatically.
