@@ -158,8 +158,7 @@ WORKFLOW
 
 
 📂 Project 3 — AI Translation Automation Tool
-
-Overview
+🚀 Overview
 
 An AI-powered translation pipeline designed to automatically translate educational video and simulation scripts into multiple languages (Hindi, English, etc.) while preserving academic accuracy, formatting, and instructional quality.
 
@@ -168,46 +167,71 @@ The system combines multi-LLM orchestration with workflow automation to produce 
 🎯 Problem
 
 Educational storyboard scripts require:
+
 Accurate academic terminology (NCERT-aligned)
+
 Strict formatting preservation
+
 Scene-by-scene consistency
+
 Proper punctuation and readability
+
 Manual review effort across hundreds of lines
 
 Traditional translators or single LLM outputs often:
+
 break structure,
+
 change meaning,
+
 lose tags,
+
 or produce inconsistent tone.
 
+💡 Solution
 
+Built an automated multi-model translation workflow using n8n that performs structured translation, refinement, and validation in sequential AI stages.
 
-****Workflow Architecture
+⚙️ Workflow Architecture
 
-
-
-
-
-
+Google Sheets → Prompt Builder → Gemini (Translation)
+                ↓
+           OpenAI (Punctuation & Cleanup)
+                ↓
+           Gemini (Academic Review)
+                ↓
+        Structured Parser → Google Sheets Output
 
 
 🧠 Model Responsibilities
 1️⃣ Gemini — Translation Engine
+
 Performs context-aware translation
+
 Maintains scene tags and structure
+
 Applies academic tone
+
 Supports curriculum-aligned terminology
 
 2️⃣ OpenAI — Language Refinement
+
 Fixes punctuation and sentence flow
+
 Improves readability
+
 Normalizes formatting
+
 Ensures teacher-style narration
 
 3️⃣ Gemini — Review & Validation
+
 Final quality verification
+
 Checks terminology consistency
+
 Ensures educational correctness
+
 Prevents structural corruption
 
 🔧 Key Features
@@ -222,22 +246,64 @@ Prevents structural corruption
 ✅ Scalable for large storyboard datasets
 
 🏗️ Tech Stack
+
 Automation: n8n
+
 LLMs: Gemini API, OpenAI API
+
 Scripting: JavaScript (n8n Code Nodes)
+
 Data Source: Google Sheets
+
 Architecture: Prompt Engineering + Workflow Automation
 
 🔄 Pipeline Logic
+
 Fetch storyboard rows from Google Sheets
+
 Auto-detect headers dynamically
+
 Build structured tagged prompt
+
 Translate using Gemini
+
 Refine punctuation using OpenAI
+
 Re-review translation via Gemini
+
 Parse scene blocks automatically
+
 Write translated output back to sheet
 
+📈 Impact
+
+⚡ Reduced manual translation effort by ~80–90%
+
+📚 Maintains educational correctness
+
+🧩 Produces ready-to-use localized scripts
+
+🔁 Enables scalable multilingual content generation
+
+🧩 Use Cases
+
+Educational video localization
+
+Simulation content translation
+
+EdTech multilingual production
+
+Curriculum-based content generation
+
+⭐ What Makes This Unique
+
+Instead of using a single AI call, this system implements:
+
+👉 LLM orchestration + validation loop
+👉 Structured translation engineering
+👉 Automation-first AI deployment
+
+— closer to real production AI systems used in startups.
 
 # 🛠️ Technical Stack
 
