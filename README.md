@@ -1,355 +1,347 @@
-# 🚀 AI Vocational Content Automation Engine
+🚀 AI Vocational Content Automation Engine
 
-A modular AI-powered automation system built in n8n for generating:
+An end-to-end AI-powered educational content generation platform built using n8n workflow orchestration and multiple Large Language Models to automate the creation, localization, and production of vocational training materials.
 
-- 🎬 Vocational Training Video Scripts
-- 🛠️ Hands-on Simulation Scripts
-- 📘 Concept Explanations (LO-based)
-- 📝 Assignments
-- ❓ Assessments
-- ☁️ Automated Google Drive Exports
+The system transforms structured curriculum inputs into fully production-ready educational assets, including scripts, simulations, translations, and voice narration.
 
-This system transforms structured vocational inputs (Topic, Learning Outcomes, NSQF Level, Sector, Job Role) into fully formatted educational content.
+🎯 Vision
 
----
+Enable scalable creation of vocational education content by replacing manual instructional design workflows with AI-driven automation pipelines.
 
-# 🏗️ System Architecture
+Instead of generating isolated AI outputs, this system builds a modular AI production engine capable of generating entire learning ecosystems automatically.
 
-Webhook → Switch (Job Role Routing) → AI Generation → Formatting → Google Drive Export
+⚙️ Core Capabilities
 
-Built using:
-- n8n (Cloud)
-- OpenAI GPT-4o Mini
-- Gemini
-- Claude
-- Google Drive API
-- Conditional Switch Routing
-- Structured Prompt Engineering
-- JSON-based content formatting
+The platform automatically generates:
 
----
+🎬 Vocational Training Video Scripts
 
-# 📂 Project 1: Video Script Generation
+🛠️ Hands-on Simulation Scripts
 
-This workflow contains 4 major content modules:
+📘 Learning Outcome (LO)-based Concept Explanations
 
-## 1️⃣ Introduction Module
-- Triggered via Webhook
-- Routed using Switch (Job Role-based)
-- GPT-4o Mini generates structured introduction
-- Output saved directly to Google Drive
+📝 Assignments
 
----
+❓ Assessments
 
-## 2️⃣ Concept Module (Advanced LO Processing)
+🌍 Multilingual Translations
 
-Input:
-- Topic
-- Learning Outcomes (LOs)
-- NSQF Level
-- Sector
+🎙️ AI Voice Narrations
 
-Processing Steps:
-1. LO Segmentation Node:
-   - Each Learning Outcome categorized into:
-     - Easy Explanation
-     - Medium Explanation
-     - Deep Explanation
+☁️ Automated Google Drive Deliverables
 
-2. Script Generation Node:
-   - Generates structured concept explanation
-   - Ensures level-based depth alignment
-3. Auto-save to Drive
-This module ensures adaptive content depth based on LO complexity.
+🏗️ System Architecture
+Webhook Input
+      ↓
+Job Role Routing (Switch Logic)
+      ↓
+AI Generation Layer (Multi-LLM)
+      ↓
+Formatting & Validation
+      ↓
+Translation / Audio Pipelines
+      ↓
+Google Drive Export
+🧠 AI Stack
 
----
+n8n — Workflow orchestration
 
-## 3️⃣ Text Module
-- Prompt-driven structured script generation
-- Custom formatting logic
-- Controlled output structure
+OpenAI GPT-4o Mini — Structured content generation
 
-## 4️⃣ Assessment & Assignment Module
-- Generates:
-  - Assessments
-  - Assignments
-- Rule-based structured prompting
-- Difficulty alignment with NSQF level
-- Auto-export to Google Drive
+Gemini — Translation & validation
 
----
+Claude — reasoning & structured expansion
 
-   WORKFLOW 
+ElevenLabs — Voice synthesis
 
-   <img width="1137" height="616" alt="Screenshot 2026-03-12 114316" src="https://github.com/user-attachments/assets/9dd8e122-de7e-4fb0-ab60-5d1d81908591" />
+Google Drive API — automated storage
 
+📂 Project 1 — Video Script Generation Engine
 
-# 📂 Project 2: Simulation Script Generation
+Automates creation of structured vocational training scripts aligned with curriculum standards.
 
-Designed for hands-on practical experience training.
+🔹 Modules
+1️⃣ Introduction Generator
 
-## Workflow Logic
+Webhook-triggered workflow
 
-### Step 1: Webhook Trigger
-Receives:
-- Topic
-- Learning Outcomes
-- Flow Idea
-- Experience Type
+Job-role based routing
 
--  Step 2:
-                ┌──────────────────┐
-                │    Webhook       │
-                └────────┬─────────┘
-                         │
-                         ▼
-                ┌──────────────────┐
-                │  AI: Module &    │
-                │  Step Generator  │
-                └────────┬─────────┘
-                         │
-                         ▼
-              (Re-enter Workflow)
-                         │
-                         ▼
-                ┌──────────────────┐
-                │   Switch Node    │
-                │ (Module Routing) │
-                └────────┬─────────┘
-                         │
-                         ▼
-                ┌──────────────────┐
-                │ AI: Script       │
-                │ Expansion Layer  │
-                └────────┬─────────┘
-                         │
-                         ▼
-                ┌──────────────────┐
-                │ Formatting Code  │
-                └────────┬─────────┘
-                         │
-                         ▼
-                Frontend / Drive Output
+Structured script generation
 
-### Step 3: Module & Step Categorization
-- Simulation broken into:
-  - Modules
-  - Steps
-  - Practical Actions
+Direct export to Google Drive
 
-### Step 4: Voiceover Script Generation
-- Internal narration
-- Instructional voiceovers
-- Practical guidance scripting
+2️⃣ Concept Module (LO-Based Intelligence)
 
-### Step 5: Formatting Layer
-- Code-based structured formatting
-- Ensures consistent full-fledged script output
+Inputs:
 
-### Step 6: Final Export
-- Google Drive file creation
-- Organized folder placement
+Topic
 
----
-WORKFLOW
+Learning Outcomes
 
-<img width="1695" height="717" alt="Screenshot 2026-03-12 114943" src="https://github.com/user-attachments/assets/071c1cde-1860-488e-be44-16faed435d53" />
+NSQF Level
 
+Sector
 
+Processing:
+
+Learning Outcomes segmented into:
+
+Easy explanation
+
+Medium explanation
+
+Deep explanation
+
+Depth automatically aligned to NSQF level
+
+Structured instructional narration generated
+
+✅ Adaptive learning depth automation
+
+3️⃣ Text Module
+
+Controlled prompt templates
+
+Structured formatting enforcement
+
+Consistent instructional output
+
+4️⃣ Assessment & Assignment Generator
+
+Automatically creates:
+
+Assessments
+
+Assignments
+
+Difficulty aligned with NSQF level
+
+Auto-exported learning materials
+
+⭐ Engineering Highlights
+
+Dynamic LO interpretation
+
+Curriculum-aware prompting
+
+Modular workflow nodes
+
+Automated document lifecycle
+
+📂 Project 2 — Simulation Script Generation Engine
+
+Generates hands-on training simulations for practical vocational learning.
+
+⚙️ Workflow Logic
+Webhook
+   ↓
+AI Module & Step Generator
+   ↓
+Switch Routing
+   ↓
+Script Expansion Layer
+   ↓
+Formatting Engine
+   ↓
+Drive / Frontend Output
+🔧 Key Features
+
+Automatic module decomposition
+
+Step-by-step practical actions
+
+Instructional narration generation
+
+Voiceover-ready scripts
+
+Structured formatting via code nodes
+
+🧩 Output Includes
+
+Simulation modules
+
+Practical workflows
+
+Instruction scripts
+
+Voiceover narration
 
 📂 Project 3 — AI Translation Automation Tool
 🚀 Overview
 
-An AI-powered translation pipeline designed to automatically translate educational video and simulation scripts into multiple languages (Hindi, English, etc.) while preserving academic accuracy, formatting, and instructional quality.
+A multi-LLM translation pipeline that converts educational scripts into multiple languages while preserving structure and academic accuracy.
 
-The system combines multi-LLM orchestration with workflow automation to produce production-ready localized content instead of raw machine translations.
+⚙️ Translation Architecture
+Google Sheets
+      ↓
+Prompt Builder
+      ↓
+Gemini — Translation
+      ↓
+OpenAI — Punctuation Refinement
+      ↓
+Gemini — Academic Review
+      ↓
+Structured Parser
+      ↓
+Google Sheets Output
+🧠 Model Orchestration
+Gemini — Translation
 
-🎯 Problem
+Context-aware translation
 
-Educational storyboard scripts require:
+Tag preservation
 
-Accurate academic terminology (NCERT-aligned)
+Academic tone enforcement
 
-Strict formatting preservation
+OpenAI — Refinement
 
-Scene-by-scene consistency
+Grammar & punctuation correction
 
-Proper punctuation and readability
+Readability improvement
 
-Manual review effort across hundreds of lines
+Formatting normalization
 
-Traditional translators or single LLM outputs often:
+Gemini — Validation
 
-break structure,
+Terminology consistency
 
-change meaning,
+Educational correctness check
 
-lose tags,
-
-or produce inconsistent tone.
-
-💡 Solution
-
-Built an automated multi-model translation workflow using n8n that performs structured translation, refinement, and validation in sequential AI stages.
-
-⚙️ Workflow Architecture
-
-Google Sheets → Prompt Builder → Gemini (Translation)
-                ↓
-           OpenAI (Punctuation & Cleanup)
-                ↓
-           Gemini (Academic Review)
-                ↓
-        Structured Parser → Google Sheets Output
-
-
-🧠 Model Responsibilities
-1️⃣ Gemini — Translation Engine
-
-Performs context-aware translation
-
-Maintains scene tags and structure
-
-Applies academic tone
-
-Supports curriculum-aligned terminology
-
-2️⃣ OpenAI — Language Refinement
-
-Fixes punctuation and sentence flow
-
-Improves readability
-
-Normalizes formatting
-
-Ensures teacher-style narration
-
-3️⃣ Gemini — Review & Validation
-
-Final quality verification
-
-Checks terminology consistency
-
-Ensures educational correctness
-
-Prevents structural corruption
-
-🔧 Key Features
-
-✅ Multi-LLM orchestration
-✅ Automated Google Sheets integration
-✅ Scene-level translation parsing
-✅ Tag-preserving structured prompts
-✅ Academic terminology enforcement
-✅ Error-resilient parsing system
-✅ Webhook-triggered automation
-✅ Scalable for large storyboard datasets
-
-🏗️ Tech Stack
-
-Automation: n8n
-
-LLMs: Gemini API, OpenAI API
-
-Scripting: JavaScript (n8n Code Nodes)
-
-Data Source: Google Sheets
-
-Architecture: Prompt Engineering + Workflow Automation
-
-🔄 Pipeline Logic
-
-Fetch storyboard rows from Google Sheets
-
-Auto-detect headers dynamically
-
-Build structured tagged prompt
-
-Translate using Gemini
-
-Refine punctuation using OpenAI
-
-Re-review translation via Gemini
-
-Parse scene blocks automatically
-
-Write translated output back to sheet
+Structural verification
 
 📈 Impact
 
-⚡ Reduced manual translation effort by ~80–90%
+~80–90% reduction in manual translation effort
 
-📚 Maintains educational correctness
+Production-ready localized scripts
 
-🧩 Produces ready-to-use localized scripts
+Consistent curriculum terminology
 
-🔁 Enables scalable multilingual content generation
+📂 Project 4 — AI Audio Generation Tool
 
-🧩 Use Cases
+Automatically converts storyboard scripts into natural voice narration using AI voice synthesis.
 
-Educational video localization
+⚙️ Workflow
+Storyboard Script
+       ↓
+Voice Selection Logic
+       ↓
+ElevenLabs API
+       ↓
+Audio Generation (.mp3)
+       ↓
+Drive Storage
+🎙️ Supported Voice Personas
 
-Simulation content translation
+Kid Voice
 
-EdTech multilingual production
+Young Adult Voice
 
-Curriculum-based content generation
+Male Voice
 
-⭐ What Makes This Unique
+Female Voice
 
-Instead of using a single AI call, this system implements:
+Elderly Narrator Voice
 
-👉 LLM orchestration + validation loop
-👉 Structured translation engineering
-👉 Automation-first AI deployment
+🔧 Features
 
-— closer to real production AI systems used in startups.
+Scene-wise audio generation
 
-# 🛠️ Technical Stack
+Character-based narration
 
-- n8n (Workflow Orchestration)
-- OpenAI GPT-4o Mini
-- Webhook-based input handling
-- Switch-based conditional routing
-- Google Drive API integration
-- Structured Prompt Engineering
-- Dynamic LO-based depth scaling
+API-driven automation
 
----
+Scalable audio production
 
-# 🔐 Security
+Plug-and-play with translation workflow
 
-- API Keys stored securely in n8n Credentials
-- No secrets included in exported workflows
-- Credentials must be reconnected upon import
+📈 Impact
 
----
+Eliminated manual recording workflows
 
-# 🎯 Key Engineering Highlights
+Reduced narration production time by ~90%
 
-- Modular workflow architecture
-- Multi-level content depth automation
-- LO-based dynamic script expansion
-- Conditional job-role routing
-- Structured formatting enforcement
-- Automated cloud document management
+Enabled automated AI video pipelines
 
+🛠️ Technical Stack
 
-# 📈 Use Cases
+n8n (Workflow Orchestration)
 
-- Vocational Training Automation
-- EdTech Content Generation
-- Scalable Curriculum Production
-- Simulation-based Practical Training
-- AI-assisted Instructional Design
+OpenAI API
 
----
+Gemini API
 
-# 👩‍💻 Author
+Claude
 
-Developed as part of an AI Automation Internship demonstrating:
+ElevenLabs API
 
-- Workflow Architecture Design
-- Prompt Engineering
-- AI System Structuring
-- Educational Content Automation
+JavaScript (n8n Code Nodes)
+
+Google Sheets API
+
+Google Drive API
+
+Webhook Architecture
+
+🔐 Security
+
+API keys stored in n8n Credentials
+
+No secrets included in repository
+
+Credentials reconfigured after import
+
+🎯 Engineering Highlights
+
+✅ Modular AI workflow architecture
+✅ Multi-LLM orchestration pipelines
+✅ Learning Outcome–based adaptive generation
+✅ Conditional job-role routing
+✅ Structured AI output enforcement
+✅ Automated cloud document management
+✅ End-to-end AI content production system
+
+📈 Use Cases
+
+Vocational Training Automation
+
+EdTech Content Production
+
+Curriculum Scaling
+
+Simulation-Based Learning
+
+AI Instructional Design Systems
+
+👩‍💻 Author
+
+S. Sudeepthi
+AI Automation Engineer (Intern)
+
+Focused on building real-world AI systems combining:
+
+Workflow Architecture
+
+Prompt Engineering
+
+LLM Orchestration
+
+Educational AI Automation
+
+⭐ What This Project Demonstrates
+
+This is not a single AI script — it is a production-style AI automation platform integrating:
+
+Generation
+
+Validation
+
+Translation
+
+Voice synthesis
+
+Cloud deployment workflows
+
+Similar to internal AI tooling used in modern AI startup
