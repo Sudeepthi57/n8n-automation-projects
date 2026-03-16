@@ -87,7 +87,9 @@ A **multi-stage AI translation pipeline** built to translate educational video a
 #### ⚙️ Translation Workflow
 
 ```
-
+Google Sheets Input → Prompt Builder → Gemini (Translation Engine)
+→ OpenAI (Punctuation & Cleanup) → Gemini (Academic Review)
+→ Structured Parser → Google Sheets Output
 ```
 
 #### 🧠 Model Responsibilities
